@@ -345,6 +345,7 @@ declare namespace Config {
   class Resolve<T = Config> extends ChainedMap<T> {
     alias: TypedChainedMap<this, { [key: string]: string | false | string[] }>;
     aliasFields: TypedChainedSet<this, RspackResolve['aliasFields'][number]>;
+    conditionNames: TypedChainedSet<this, RspackResolve['conditionNames'][number]>;
     descriptionFiles: TypedChainedSet<
       this,
       RspackResolve['descriptionFiles'][number]

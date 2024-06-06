@@ -513,6 +513,17 @@ config.resolve.aliasFields
   .clear()
 ```
 
+#### Config resolve conditionNames
+
+```js
+config.resolve.conditionNames : ChainedSet
+
+config.resolve.conditionNames
+  .add(value)
+  .prepend(value)
+  .clear()
+```
+
 #### Config resolve descriptionFields
 
 ```js

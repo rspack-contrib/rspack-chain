@@ -7,6 +7,7 @@ module.exports = class extends ChainedMap {
     super(parent);
     this.alias = new ChainedMap(this);
     this.aliasFields = new ChainedSet(this);
+    this.conditionNames = new ChainedSet(this);
     this.descriptionFiles = new ChainedSet(this);
     this.extensions = new ChainedSet(this);
     this.mainFields = new ChainedSet(this);
@@ -42,6 +43,7 @@ module.exports = class extends ChainedMap {
       Object.assign(this.entries() || {}, {
         alias: this.alias.entries(),
         aliasFields: this.aliasFields.values(),
+        conditionNames: this.conditionNames.values(),
         descriptionFiles: this.descriptionFiles.values(),
         extensions: this.extensions.values(),
         mainFields: this.mainFields.values(),
@@ -62,6 +64,7 @@ module.exports = class extends ChainedMap {
     const omissions = [
       'alias',
       'aliasFields',
+      'conditionNames',
       'descriptionFiles',
       'extensions',
       'mainFields',
