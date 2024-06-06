@@ -8,14 +8,14 @@ jobs:
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
       - name: Run lint
-        run: yarn lint
+        run: pnpm run lint
   style:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
       - name: Run code style lint
-        run: yarn style
+        run: pnpm run style
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -28,11 +28,11 @@ jobs:
           node-version: ${{ matrix.node }}
       - uses: bahmutov/npm-install@v1
       - name: Run unit tests
-        run: yarn test
+        run: pnpm run test
   test-types:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
       - name: Run type declaration tests
-        run: yarn test:types
+        run: pnpm run test:types
