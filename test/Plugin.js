@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 const EnvironmentPlugin = require('webpack/lib/EnvironmentPlugin');
 const Plugin = require('../src/Plugin');
 

@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 const { validate } = require('webpack');
 const { stringify } = require('javascript-stringify');
 const EnvironmentPlugin = require('webpack/lib/EnvironmentPlugin');

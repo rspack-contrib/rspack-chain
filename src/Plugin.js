@@ -67,7 +67,6 @@ module.exports = Orderable(
       // or webpack configuration won't end up being used.
       if (typeof plugin === 'string') {
         pluginPath = plugin;
-        // eslint-disable-next-line global-require, import/no-dynamic-require
         plugin = require(pluginPath);
       }
 
