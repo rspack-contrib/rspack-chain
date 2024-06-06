@@ -1,5 +1,17 @@
 # rspack-chain
 
+<p>
+  <a href="https://npmjs.com/package/rspack-chain?activeTab=readme">
+   <img src="https://img.shields.io/npm/v/rspack-chain?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" />
+  </a>
+  <a href="https://nodejs.org/en/about/previous-releases">
+    <img src="https://img.shields.io/node/v/rspack-chain.svg?style=flat-square&colorA=564341&colorB=EDED91" alt="node version">
+  </a>
+  <a href="https://github.com/web-infra-dev/rsbuild/blob/main/LICENSE">
+    <img src="https://img.shields.io/npm/l/rspack-chain?style=flat-square&colorA=564341&colorB=EDED91" alt="license" />
+  </a>
+</p>
+
 Use a chaining API to generate and simplify the modification of Rspack configurations.
 
 > Note: rspack-chain is a fork of [neutrinojs/webpack-chain](https://github.com/neutrinojs/webpack-chain), thanks for their excellent work ❤️
