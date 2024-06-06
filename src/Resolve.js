@@ -64,9 +64,11 @@ module.exports = class extends ChainedMap {
     const omissions = [
       'alias',
       'aliasFields',
+      'byDependency',
       'conditionNames',
       'descriptionFiles',
       'extensions',
+      'fallback',
       'mainFields',
       'mainFiles',
       'exportsFields',

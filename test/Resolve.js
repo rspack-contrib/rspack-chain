@@ -99,6 +99,37 @@ test('merge with values', () => {
   });
 });
 
+test('merge omissions and omit', () => {
+  const resolve = new Resolve();
+
+  resolve.merge(
+    {
+      // should merge
+      alias: { ReactDOM: 'src/react-dom' },
+      // should merge
+      fallback: {
+        child_process: false,
+        cluster: false,
+      },
+      // should not merge
+      byDependency: {
+        esm: {
+          mainFields: ['browser', 'module'],
+        },
+      },
+    },
+    ['byDependency'],
+  );
+
+  expect(resolve.toConfig()).toStrictEqual({
+    alias: { ReactDOM: 'src/react-dom' },
+    fallback: {
+      child_process: false,
+      cluster: false,
+    },
+  });
+});
+
 test('merge with omit', () => {
   const resolve = new Resolve();
 
