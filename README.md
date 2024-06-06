@@ -1,34 +1,19 @@
-# webpack-chain
+# rspack-chain
 
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][npm-downloads]][npm-url]
-[![CI Status][ci-image]][ci-url]
+Use a chaining API to generate and simplify the modification of Rspack configurations.
 
-Use a chaining API to generate and simplify the modification of webpack 4 configurations.
-
-This documentation corresponds to v6 of webpack-chain. For previous versions, see:
-
-* [v5 docs](https://github.com/neutrinojs/webpack-chain/tree/v5)
-* [v4 docs](https://github.com/neutrinojs/webpack-chain/tree/v4)
-* [v3 docs](https://github.com/neutrinojs/webpack-chain/tree/v3)
-* [v2 docs](https://github.com/neutrinojs/webpack-chain/tree/v2)
-* [v1 docs](https://github.com/neutrinojs/webpack-chain/tree/v1)
-
-_Note: while webpack-chain is utilized extensively in Neutrino, this package is
-completely standalone and can be used by any project._
-
-**[Chinese docs(中文文档)](https://github.com/Yatoo2018/webpack-chain/tree/zh-cmn-Hans)**
+> Note: rspack-chain is a fork of [neutrinojs/webpack-chain](https://github.com/neutrinojs/webpack-chain), thanks for their excellent work ❤️
 
 ## Introduction
 
-webpack's core configuration is based on creating and modifying a
+Rspack's core configuration is based on creating and modifying a
 potentially unwieldy JavaScript object. While this is OK for configurations
 on individual projects, trying to share these objects across projects and
 make subsequent modifications gets messy, as you need to have a deep
 understanding of the underlying object structure to make those changes.
 
-`webpack-chain` attempts to improve this process by providing a chainable or
-fluent API for creating and modifying webpack configurations. Key portions
+`rspack-chain` attempts to improve this process by providing a chainable or
+fluent API for creating and modifying Rspack configurations. Key portions
 of the API can be referenced by user-specified names, which helps to
 standardize how to modify a configuration across projects.
 
@@ -36,33 +21,33 @@ This is easier explained through the examples following.
 
 ## Installation
 
-`webpack-chain` requires Node.js 10 or higher. `webpack-chain` also only creates
-configuration objects designed for use with webpack 4.
+`rspack-chain` requires Node.js 16 or higher. `rspack-chain` also only creates
+configuration objects designed for use with Rspack.
 
 You may install this package using either Yarn or npm (choose one):
 
 **Yarn**
 
 ```bash
-yarn add --dev webpack-chain
+yarn add --dev rspack-chain
 ```
 
 **npm**
 
 ```bash
-npm install --save-dev webpack-chain
+npm install --save-dev rspack-chain
 ```
 
 ## Getting Started
 
-Once you have `webpack-chain` installed, you can start creating a
-webpack configuration. For this guide, our example base configuration will
-be `webpack.config.js` in the root of our project directory.
+Once you have `rspack-chain` installed, you can start creating a
+Rspack configuration. For this guide, our example base configuration will
+be `rspack.config.js` in the root of our project directory.
 
 ```js
-// Require the webpack-chain module. This module exports a single
+// Require the rspack-chain module. This module exports a single
 // constructor function for creating a configuration API.
-const Config = require('webpack-chain');
+const Config = require('rspack-chain');
 
 // Instantiate the configuration with a new API
 const config = new Config();
@@ -117,16 +102,16 @@ config
   .plugin('clean')
     .use(CleanPlugin, [['dist'], { root: '/dir' }]);
 
-// Export the completed configuration object to be consumed by webpack
+// Export the completed configuration object to be consumed by rspack
 module.exports = config.toConfig();
 ```
 
 Having shared configurations is also simple. Just export the configuration
-and call `.toConfig()` prior to passing to webpack.
+and call `.toConfig()` prior to passing to rspack.
 
 ```js
-// webpack.core.js
-const Config = require('webpack-chain');
+// rspack.core.js
+const Config = require('rspack-chain');
 const config = new Config();
 
 // Make configuration shared across targets
@@ -134,15 +119,15 @@ const config = new Config();
 
 module.exports = config;
 
-// webpack.dev.js
-const config = require('./webpack.core');
+// rspack.dev.js
+const config = require('./rspack.core');
 
 // Dev-specific configuration
 // ...
 module.exports = config.toConfig();
 
-// webpack.prod.js
-const config = require('./webpack.core');
+// rspack.prod.js
+const config = require('./rspack.core');
 
 // Production-specific configuration
 // ...
@@ -151,7 +136,7 @@ module.exports = config.toConfig();
 
 ## ChainedMap
 
-One of the core API interfaces in webpack-chain is a `ChainedMap`. A
+One of the core API interfaces in rspack-chain is a `ChainedMap`. A
 `ChainedMap` operates similar to a JavaScript Map, with some conveniences for
 chaining and generating configuration. If a property is marked as being a
 `ChainedMap`, it will have an API and methods as described below:
@@ -264,7 +249,7 @@ config.node.set('amd', 'true');
 
 ## ChainedSet
 
-Another of the core API interfaces in webpack-chain is a `ChainedSet`. A
+Another of the core API interfaces in rspack-chain is a `ChainedSet`. A
 `ChainedSet` operates similar to a JavaScript Set, with some conveniences for
 chaining and generating configuration. If a property is marked as being a
 `ChainedSet`, it will have an API and methods as described below:
@@ -354,7 +339,7 @@ instance, allowing you to continue to chain.
 Create a new configuration object.
 
 ```js
-const Config = require('webpack-chain');
+const Config = require('rspack-chain');
 
 const config = new Config();
 ```
@@ -368,7 +353,7 @@ specified. This is so you may chain API calls continuously if desired.
 
 For details on the specific values that are valid for all shorthand and
 low-level methods, please refer to their corresponding name in the
-[webpack docs hierarchy](https://webpack.js.org/configuration/).
+[Rspack docs hierarchy](https://www.rspack.dev/config/).
 
 ```js
 Config : ChainedMap
@@ -631,7 +616,7 @@ _NOTE: Do not use `new` to create the resolve plugin, as this will be done for y
 ```js
 config.resolve
   .plugin(name)
-  .use(WebpackResolvePlugin, args)
+  .use(RspackResolvePlugin, args)
 
 // Examples
 
@@ -640,7 +625,7 @@ config.resolve
   .use(ResolveCSSPlugin, [{ cssBasePath: true }])
 
 // Resolve plugins can also be specified by their path, allowing the expensive require()s to be
-// skipped in cases where the plugin or webpack configuration won't end up being used.
+// skipped in cases where the plugin or Rspack configuration won't end up being used.
 config.resolve
   .plugin('resolve-css')
   .use(require.resolve('resolve-css-plugin'), [{ cssBasePath: true }])
@@ -792,7 +777,7 @@ _NOTE: Do not use `new` to create the minimizer plugin, as this will be done for
 ```js
 config.optimization
   .minimizer(name)
-  .use(WebpackPlugin, args)
+  .use(RspackPlugin, args)
 
 // Examples
 
@@ -801,7 +786,7 @@ config.optimization
   .use(OptimizeCSSAssetsPlugin, [{ cssProcessorOptions: { safe: true } }])
 
 // Minimizer plugins can also be specified by their path, allowing the expensive require()s to be
-// skipped in cases where the plugin or webpack configuration won't end up being used.
+// skipped in cases where the plugin or Rspack configuration won't end up being used.
 config.optimization
   .minimizer('css')
   .use(require.resolve('optimize-css-assets-webpack-plugin'), [{ cssProcessorOptions: { safe: true } }])
@@ -863,19 +848,19 @@ _NOTE: Do not use `new` to create the plugin, as this will be done for you._
 ```js
 config
   .plugin(name)
-  .use(WebpackPlugin, args)
+  .use(RspackPlugin, args)
 
 // Examples
 
 config
   .plugin('hot')
-  .use(webpack.HotModuleReplacementPlugin);
+  .use(rspack.HotModuleReplacementPlugin);
 
 // Plugins can also be specified by their path, allowing the expensive require()s to be
-// skipped in cases where the plugin or webpack configuration won't end up being used.
+// skipped in cases where the plugin or Rspack configuration won't end up being used.
 config
   .plugin('env')
-  .use(require.resolve('webpack/lib/EnvironmentPlugin'), [{ 'VAR': false }]);
+  .use(require.resolve('rspack/lib/EnvironmentPlugin'), [{ 'VAR': false }]);
 ```
 
 #### Config plugins: modify arguments
@@ -919,10 +904,10 @@ config
 
 config
   .plugin('html-template')
-    .use(HtmlWebpackTemplate)
+    .use(HtmlRspackTemplate)
     .end()
   .plugin('script-ext')
-    .use(ScriptExtWebpackPlugin)
+    .use(ScriptExtRspackPlugin)
     .before('html-template');
 ```
 
@@ -941,10 +926,10 @@ config
 config
   .plugin('html-template')
     .after('script-ext')
-    .use(HtmlWebpackTemplate)
+    .use(HtmlRspackTemplate)
     .end()
   .plugin('script-ext')
-    .use(ScriptExtWebpackPlugin);
+    .use(ScriptExtRspackPlugin);
 ```
 
 #### Config resolve plugins
@@ -961,7 +946,7 @@ _NOTE: Do not use `new` to create the plugin, as this will be done for you._
 ```js
 config.resolve
   .plugin(name)
-  .use(WebpackPlugin, args)
+  .use(RspackPlugin, args)
 ```
 
 #### Config resolve plugins: modify arguments
@@ -1001,10 +986,10 @@ config.resolve
 
 config.resolve
   .plugin('beta')
-    .use(BetaWebpackPlugin)
+    .use(BetaRspackPlugin)
     .end()
   .plugin('alpha')
-    .use(AlphaWebpackPlugin)
+    .use(AlphaRspackPlugin)
     .before('beta');
 ```
 
@@ -1024,10 +1009,10 @@ config.resolve
 config.resolve
   .plugin('beta')
     .after('alpha')
-    .use(BetaWebpackTemplate)
+    .use(BetaRspackTemplate)
     .end()
   .plugin('alpha')
-    .use(AlphaWebpackPlugin);
+    .use(AlphaRspackPlugin);
 ```
 
 #### Config node
@@ -1365,8 +1350,6 @@ for modules that match the rule.
 
 See "Config resolve" sections above for full syntax.
 
-**Note:** This option is supported by webpack since 4.36.1.
-
 ```js
 config.module
   .rule(name)
@@ -1385,12 +1368,12 @@ config.module
 
 ### Merging Config
 
-webpack-chain supports merging in an object to the configuration instance which
-matches a layout similar to how the webpack-chain schema is laid out.
+rspack-chain supports merging in an object to the configuration instance which
+matches a layout similar to how the rspack-chain schema is laid out.
 
-**Note:** This object does not match the webpack configuration schema exactly
+**Note:** This object does not match the Rspack configuration schema exactly
 (for example the `[name]` keys for entry/rules/plugins), so you may need to transform
-webpack configuration objects (such as those output by webpack-chain's `.toConfig()`)
+Rspack configuration objects (such as those output by rspack-chain's `.toConfig()`)
 to match the layout below prior to passing to `.merge()`.
 
 ```js
@@ -1427,7 +1410,7 @@ config.merge({
 
   plugin: {
     [name]: {
-      plugin: WebpackPlugin,
+      plugin: RspackPlugin,
       args: [...args],
       before,
       after
@@ -1470,7 +1453,7 @@ config.merge({
     minimize,
     minimizer: {
       [name]: {
-        plugin: WebpackPlugin,
+        plugin: RspackPlugin,
         args: [...args],
         before,
         after
@@ -1515,7 +1498,7 @@ config.merge({
 
     plugin: {
       [name]: {
-        plugin: WebpackPlugin,
+        plugin: RspackPlugin,
         args: [...args],
         before,
         after
@@ -1540,7 +1523,7 @@ config.merge({
 
     plugin: {
       [name]: {
-        plugin: WebpackPlugin,
+        plugin: RspackPlugin,
         args: [...args],
         before,
         after
@@ -1603,7 +1586,7 @@ config
   .when(process.env.NODE_ENV === 'production', config => {
     config
       .plugin('minify')
-      .use(BabiliWebpackPlugin);
+      .use(BabiliRspackPlugin);
   });
 ```
 
@@ -1612,14 +1595,14 @@ config
 // otherwise set devtool to source-map
 config
   .when(process.env.NODE_ENV === 'production',
-    config => config.plugin('minify').use(BabiliWebpackPlugin),
+    config => config.plugin('minify').use(BabiliRspackPlugin),
     config => config.devtool('source-map')
   );
 ```
 
 ### Inspecting generated configuration
 
-You can inspect the generated webpack config using `config.toString()`. This
+You can inspect the generated Rspack config using `config.toString()`. This
 will generate a stringified version of the config with comment hints for named
 rules, uses and plugins:
 
@@ -1653,7 +1636,7 @@ config.toString();
 */
 ```
 
-By default the generated string cannot be used directly as real webpack config
+By default the generated string cannot be used directly as real Rspack config
 if it contains objects and plugins that need to be required. In order to
 generate usable config, you can customize how objects and plugins are
 stringified by setting a special `__expression` property on them:
@@ -1752,9 +1735,3 @@ Config.toString({
   }
 }
 ```
-
-[npm-image]: https://img.shields.io/npm/v/webpack-chain.svg
-[npm-downloads]: https://img.shields.io/npm/dt/webpack-chain.svg
-[npm-url]: https://www.npmjs.com/package/webpack-chain
-[ci-image]: https://github.com/neutrinojs/webpack-chain/actions/workflows/ci.yml/badge.svg
-[ci-url]: https://github.com/neutrinojs/webpack-chain/actions/workflows/ci.yml
