@@ -5,10 +5,10 @@
   "typings": "types/index.d.ts",
   "repository": "rspack-contrib/rspack-chain",
   "keywords": [
+    "rspack",
     "webpack",
     "config",
     "chain",
-    "fluent",
     "api"
   ],
   "engines": {
@@ -18,7 +18,7 @@
     "src",
     "types/*.d.ts"
   ],
-  "author": "Eli Perelman <eli@eliperelman.com>",
+  "author": "rspack-contrib",
   "license": "MPL-2.0",
   "packageManager": "pnpm@9.1.3",
   "scripts": {
@@ -28,9 +28,7 @@
     "style": "prettier --check .",
     "style:fix": "prettier --write .",
     "test": "jest",
-    "test:types": "tsc -p ./types/test/tsconfig.json",
-    "changelog": "auto-changelog --remote upstream --commit-limit false",
-    "version": "yarn changelog --package && git add CHANGELOG.md"
+    "test:types": "tsc -p ./types/test/tsconfig.json"
   },
   "dependencies": {
     "deepmerge": "^1.5.2",
@@ -40,7 +38,6 @@
     "@types/enhanced-resolve": "^3.0.6",
     "@types/tapable": "^1.0.6",
     "@types/webpack": "^5.0.0",
-    "auto-changelog": "^2.2.0",
     "enhanced-resolve": "^5.8.2",
     "jest": "^27.0.0",
     "prettier": "^2.0.5",

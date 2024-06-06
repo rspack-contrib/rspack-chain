@@ -58,49 +58,42 @@ const config = new Config();
 config
   // Interact with entry points
   .entry('index')
-    .add('src/index.js')
-    .end()
+  .add('src/index.js')
+  .end()
   // Modify output settings
-  .output
-    .path('dist')
-    .filename('[name].bundle.js');
+  .output.path('dist')
+  .filename('[name].bundle.js');
 
 // Create named rules which can be modified later
 config.module
   .rule('lint')
-    .test(/\.js$/)
-    .pre()
-    .include
-      .add('src')
-      .end()
-    // Even create named uses (loaders)
-    .use('eslint')
-      .loader('eslint-loader')
-      .options({
-        rules: {
-          semi: 'off'
-        }
-      });
+  .test(/\.js$/)
+  .pre()
+  .include.add('src')
+  .end()
+  // Even create named uses (loaders)
+  .use('eslint')
+  .loader('eslint-loader')
+  .options({
+    rules: {
+      semi: 'off',
+    },
+  });
 
 config.module
   .rule('compile')
-    .test(/\.js$/)
-    .include
-      .add('src')
-      .add('test')
-      .end()
-    .use('babel')
-      .loader('babel-loader')
-      .options({
-        presets: [
-          ['@babel/preset-env', { modules: false }]
-        ]
-      });
+  .test(/\.js$/)
+  .include.add('src')
+  .add('test')
+  .end()
+  .use('babel')
+  .loader('babel-loader')
+  .options({
+    presets: [['@babel/preset-env', { modules: false }]],
+  });
 
 // Create named plugins too!
-config
-  .plugin('clean')
-    .use(CleanPlugin, [['dist'], { root: '/dir' }]);
+config.plugin('clean').use(CleanPlugin, [['dist'], { root: '/dir' }]);
 
 // Export the completed configuration object to be consumed by rspack
 module.exports = config.toConfig();
@@ -146,20 +139,20 @@ you to chain these methods.**
 
 ```js
 // Remove all entries from a Map.
-clear()
+clear();
 ```
 
 ```js
 // Remove a single entry from a Map given its key.
 // key: *
-delete(key)
+delete key;
 ```
 
 ```js
 // Fetch the value from a Map located at the corresponding key.
 // key: *
 // returns: value
-get(key)
+get(key);
 ```
 
 ```js
@@ -168,14 +161,14 @@ get(key)
 // key: *
 // fn: Function () -> value
 // returns: value
-getOrCompute(key, fn)
+getOrCompute(key, fn);
 ```
 
 ```js
 // Set a value on the Map stored at the `key` location.
 // key: *
 // value: *
-set(key, value)
+set(key, value);
 ```
 
 ```js
@@ -183,13 +176,13 @@ set(key, value)
 // particular key.
 // key: *
 // returns: Boolean
-has(key)
+has(key);
 ```
 
 ```js
 // Returns an array of all the values stored in the Map.
 // returns: Array
-values()
+values();
 ```
 
 ```js
@@ -200,7 +193,7 @@ values()
 // This will order properties by their name if the value is
 // a ChainedMap that used .before() or .after().
 // returns: Object, undefined if empty
-entries()
+entries();
 ```
 
 ```js
@@ -210,30 +203,30 @@ entries()
 // for property names to omit from being merged.
 // obj: Object
 // omit: Optional Array
-merge(obj, omit)
+merge(obj, omit);
 ```
 
 ```js
 // Execute a function against the current configuration context
 // handler: Function -> ChainedMap
-  // A function which is given a single argument of the ChainedMap instance
-batch(handler)
+// A function which is given a single argument of the ChainedMap instance
+batch(handler);
 ```
 
 ```js
 // Conditionally execute a function to continue configuration
 // condition: Boolean
 // whenTruthy: Function -> ChainedMap
-  // invoked when condition is truthy, given a single argument of the ChainedMap instance
+// invoked when condition is truthy, given a single argument of the ChainedMap instance
 // whenFalsy: Optional Function -> ChainedMap
-  // invoked when condition is falsy, given a single argument of the ChainedMap instance
-when(condition, whenTruthy, whenFalsy)
+// invoked when condition is falsy, given a single argument of the ChainedMap instance
+when(condition, whenTruthy, whenFalsy);
 ```
 
 ## ChainedValueMap
 
-`ChainedValueMap` inherited `ChainedMap` but callable. call it by value means to 
-set it to it and clean all data in map. set any key/value in map will clear value 
+`ChainedValueMap` inherited `ChainedMap` but callable. call it by value means to
+set it to it and clean all data in map. set any key/value in map will clear value
 setted by call it.
 
 It is chainable,so calling it will return the original instance, allowing you to continue to chain.
@@ -260,24 +253,24 @@ you to chain these methods.**
 ```js
 // Add/append a value to the end of a Set.
 // value: *
-add(value)
+add(value);
 ```
 
 ```js
 // Add a value to the beginning of a Set.
 // value: *
-prepend(value)
+prepend(value);
 ```
 
 ```js
 // Remove all values from a Set.
-clear()
+clear();
 ```
 
 ```js
 // Remove a specific value from a Set.
 // value: *
-delete(value)
+delete value;
 ```
 
 ```js
@@ -285,36 +278,36 @@ delete(value)
 // backing Set contains the specified value.
 // value: *
 // returns: Boolean
-has(value)
+has(value);
 ```
 
 ```js
 // Returns an array of values contained in the backing Set.
 // returns: Array
-values()
+values();
 ```
 
 ```js
 // Concatenates the given array to the end of the backing Set.
 // arr: Array
-merge(arr)
+merge(arr);
 ```
 
 ```js
 // Execute a function against the current configuration context
 // handler: Function -> ChainedSet
-  // A function which is given a single argument of the ChainedSet instance
-batch(handler)
+// A function which is given a single argument of the ChainedSet instance
+batch(handler);
 ```
 
 ```js
 // Conditionally execute a function to continue configuration
 // condition: Boolean
 // whenTruthy: Function -> ChainedSet
-  // invoked when condition is truthy, given a single argument of the ChainedSet instance
+// invoked when condition is truthy, given a single argument of the ChainedSet instance
 // whenFalsy: Optional Function -> ChainedSet
-  // invoked when condition is falsy, given a single argument of the ChainedSet instance
-when(condition, whenTruthy, whenFalsy)
+// invoked when condition is falsy, given a single argument of the ChainedSet instance
+when(condition, whenTruthy, whenFalsy);
 ```
 
 ## Shorthand methods
@@ -356,7 +349,7 @@ low-level methods, please refer to their corresponding name in the
 [Rspack docs hierarchy](https://www.rspack.dev/config/).
 
 ```js
-Config : ChainedMap
+Config: ChainedMap;
 ```
 
 #### Config shorthand methods
@@ -387,7 +380,7 @@ config
   .recordsOutputPath(recordsOutputPath)
   .name(name)
   .infrastructureLogging(infrastructureLogging)
-  .snapshot(snapshot)
+  .snapshot(snapshot);
 ```
 
 #### Config entryPoints
@@ -551,6 +544,7 @@ config.resolve.mainFiles
   .prepend(value)
   .clear()
 ```
+
 #### Config resolve exportsFields
 
 ```js
@@ -561,6 +555,7 @@ config.resolve.exportsFields
   .prepend(value)
   .clear()
 ```
+
 #### Config resolve importsFields
 
 ```js
@@ -571,6 +566,7 @@ config.resolve.importsFields
   .prepend(value)
   .clear()
 ```
+
 #### Config resolve restrictions
 
 ```js
@@ -581,6 +577,7 @@ config.resolve.restrictions
   .prepend(value)
   .clear()
 ```
+
 #### Config resolve roots
 
 ```js
@@ -602,6 +599,7 @@ config.resolve.modules
   .prepend(value)
   .clear()
 ```
+
 #### Config resolve plugin
 
 ```js
@@ -614,52 +612,46 @@ config.resolve
 _NOTE: Do not use `new` to create the resolve plugin, as this will be done for you._
 
 ```js
-config.resolve
-  .plugin(name)
-  .use(RspackResolvePlugin, args)
+config.resolve.plugin(name).use(RspackResolvePlugin, args);
 
 // Examples
 
 config.resolve
   .plugin('resolve-css')
-  .use(ResolveCSSPlugin, [{ cssBasePath: true }])
+  .use(ResolveCSSPlugin, [{ cssBasePath: true }]);
 
 // Resolve plugins can also be specified by their path, allowing the expensive require()s to be
 // skipped in cases where the plugin or Rspack configuration won't end up being used.
 config.resolve
   .plugin('resolve-css')
-  .use(require.resolve('resolve-css-plugin'), [{ cssBasePath: true }])
-
+  .use(require.resolve('resolve-css-plugin'), [{ cssBasePath: true }]);
 ```
 
 #### Config resolve plugin: modify arguments
 
 ```js
-config.resolve
-  .plugin(name)
-  .tap(args => newArgs)
+config.resolve.plugin(name).tap((args) => newArgs);
 
 // Example
 config.resolve
   .plugin('resolve-css')
-  .tap(args => [...args, { cssBasePath: false }])
+  .tap((args) => [...args, { cssBasePath: false }]);
 ```
 
 #### Config resolve plugin: modify instantiation
 
 ```js
-config.resolve
-  .plugin(name)
-  .init((Plugin, args) => new Plugin(...args));
+config.resolve.plugin(name).init((Plugin, args) => new Plugin(...args));
 ```
 
 #### Config resolve plugin: removing
 
 ```js
-config.resolve.plugins.delete(name)
+config.resolve.plugins.delete(name);
 ```
 
 --- end
+
 #### Config resolve fallback
 
 ```js
@@ -775,50 +767,46 @@ config.optimization
 _NOTE: Do not use `new` to create the minimizer plugin, as this will be done for you._
 
 ```js
-config.optimization
-  .minimizer(name)
-  .use(RspackPlugin, args)
+config.optimization.minimizer(name).use(RspackPlugin, args);
 
 // Examples
 
 config.optimization
   .minimizer('css')
-  .use(OptimizeCSSAssetsPlugin, [{ cssProcessorOptions: { safe: true } }])
+  .use(OptimizeCSSAssetsPlugin, [{ cssProcessorOptions: { safe: true } }]);
 
 // Minimizer plugins can also be specified by their path, allowing the expensive require()s to be
 // skipped in cases where the plugin or Rspack configuration won't end up being used.
 config.optimization
   .minimizer('css')
-  .use(require.resolve('optimize-css-assets-webpack-plugin'), [{ cssProcessorOptions: { safe: true } }])
-
+  .use(require.resolve('optimize-css-assets-webpack-plugin'), [
+    { cssProcessorOptions: { safe: true } },
+  ]);
 ```
 
 #### Config optimization minimizers: modify arguments
 
 ```js
-config.optimization
-  .minimizer(name)
-  .tap(args => newArgs)
+config.optimization.minimizer(name).tap((args) => newArgs);
 
 // Example
 config.optimization
   .minimizer('css')
-  .tap(args => [...args, { cssProcessorOptions: { safe: false } }])
+  .tap((args) => [...args, { cssProcessorOptions: { safe: false } }]);
 ```
 
 #### Config optimization minimizers: modify instantiation
 
 ```js
-config.optimization
-  .minimizer(name)
-  .init((Plugin, args) => new Plugin(...args));
+config.optimization.minimizer(name).init((Plugin, args) => new Plugin(...args));
 ```
 
 #### Config optimization minimizers: removing
 
 ```js
-config.optimization.minimizers.delete(name)
+config.optimization.minimizers.delete(name);
 ```
+
 #### Config optimization splitChunks
 
 ```js
@@ -846,48 +834,38 @@ config.plugin(name) : ChainedMap
 _NOTE: Do not use `new` to create the plugin, as this will be done for you._
 
 ```js
-config
-  .plugin(name)
-  .use(RspackPlugin, args)
+config.plugin(name).use(RspackPlugin, args);
 
 // Examples
 
-config
-  .plugin('hot')
-  .use(rspack.HotModuleReplacementPlugin);
+config.plugin('hot').use(rspack.HotModuleReplacementPlugin);
 
 // Plugins can also be specified by their path, allowing the expensive require()s to be
 // skipped in cases where the plugin or Rspack configuration won't end up being used.
 config
   .plugin('env')
-  .use(require.resolve('rspack/lib/EnvironmentPlugin'), [{ 'VAR': false }]);
+  .use(require.resolve('rspack/lib/EnvironmentPlugin'), [{ VAR: false }]);
 ```
 
 #### Config plugins: modify arguments
 
 ```js
-config
-  .plugin(name)
-  .tap(args => newArgs)
+config.plugin(name).tap((args) => newArgs);
 
 // Example
-config
-  .plugin('env')
-  .tap(args => [...args, 'SECRET_KEY']);
+config.plugin('env').tap((args) => [...args, 'SECRET_KEY']);
 ```
 
 #### Config plugins: modify instantiation
 
 ```js
-config
-  .plugin(name)
-  .init((Plugin, args) => new Plugin(...args));
+config.plugin(name).init((Plugin, args) => new Plugin(...args));
 ```
 
 #### Config plugins: removing
 
 ```js
-config.plugins.delete(name)
+config.plugins.delete(name);
 ```
 
 #### Config plugins: ordering before
@@ -896,19 +874,17 @@ Specify that the current `plugin` context should operate before another named
 `plugin`. You cannot use both `.before()` and `.after()` on the same plugin.
 
 ```js
-config
-  .plugin(name)
-    .before(otherName)
+config.plugin(name).before(otherName);
 
 // Example
 
 config
   .plugin('html-template')
-    .use(HtmlRspackTemplate)
-    .end()
+  .use(HtmlRspackTemplate)
+  .end()
   .plugin('script-ext')
-    .use(ScriptExtRspackPlugin)
-    .before('html-template');
+  .use(ScriptExtRspackPlugin)
+  .before('html-template');
 ```
 
 #### Config plugins: ordering after
@@ -917,19 +893,17 @@ Specify that the current `plugin` context should operate after another named
 `plugin`. You cannot use both `.before()` and `.after()` on the same plugin.
 
 ```js
-config
-  .plugin(name)
-    .after(otherName)
+config.plugin(name).after(otherName);
 
 // Example
 
 config
   .plugin('html-template')
-    .after('script-ext')
-    .use(HtmlRspackTemplate)
-    .end()
+  .after('script-ext')
+  .use(HtmlRspackTemplate)
+  .end()
   .plugin('script-ext')
-    .use(ScriptExtRspackPlugin);
+  .use(ScriptExtRspackPlugin);
 ```
 
 #### Config resolve plugins
@@ -944,31 +918,25 @@ config.resolve.plugin(name) : ChainedMap
 _NOTE: Do not use `new` to create the plugin, as this will be done for you._
 
 ```js
-config.resolve
-  .plugin(name)
-  .use(RspackPlugin, args)
+config.resolve.plugin(name).use(RspackPlugin, args);
 ```
 
 #### Config resolve plugins: modify arguments
 
 ```js
-config.resolve
-  .plugin(name)
-  .tap(args => newArgs)
+config.resolve.plugin(name).tap((args) => newArgs);
 ```
 
 #### Config resolve plugins: modify instantiation
 
 ```js
-config.resolve
-  .plugin(name)
-  .init((Plugin, args) => new Plugin(...args))
+config.resolve.plugin(name).init((Plugin, args) => new Plugin(...args));
 ```
 
 #### Config resolve plugins: removing
 
 ```js
-config.resolve.plugins.delete(name)
+config.resolve.plugins.delete(name);
 ```
 
 #### Config resolve plugins: ordering before
@@ -978,19 +946,17 @@ Specify that the current `plugin` context should operate before another named
 plugin.
 
 ```js
-config.resolve
-  .plugin(name)
-    .before(otherName)
+config.resolve.plugin(name).before(otherName);
 
 // Example
 
 config.resolve
   .plugin('beta')
-    .use(BetaRspackPlugin)
-    .end()
+  .use(BetaRspackPlugin)
+  .end()
   .plugin('alpha')
-    .use(AlphaRspackPlugin)
-    .before('beta');
+  .use(AlphaRspackPlugin)
+  .before('beta');
 ```
 
 #### Config resolve plugins: ordering after
@@ -1000,19 +966,17 @@ Specify that the current `plugin` context should operate after another named
 plugin.
 
 ```js
-config.resolve
-  .plugin(name)
-    .after(otherName)
+config.resolve.plugin(name).after(otherName);
 
 // Example
 
 config.resolve
   .plugin('beta')
-    .after('alpha')
-    .use(BetaRspackTemplate)
-    .end()
+  .after('alpha')
+  .use(BetaRspackTemplate)
+  .end()
   .plugin('alpha')
-    .use(AlphaRspackPlugin);
+  .use(AlphaRspackPlugin);
 ```
 
 #### Config node
@@ -1096,7 +1060,7 @@ config.devServer
   .useLocalIp(useLocalIp)
   .watchContentBase(watchContentBase)
   .watchOptions(watchOptions)
-  .writeToDisk(writeToDisk)
+  .writeToDisk(writeToDisk);
 ```
 
 #### Config module
@@ -1158,17 +1122,19 @@ config.module
 ```js
 config.module
   .rule(name)
-    .use(name)
-      .tap(options => newOptions)
+  .use(name)
+  .tap((options) => newOptions);
 
 // Example
 
 config.module
   .rule('compile')
-    .use('babel')
-      .tap(options => merge(options, {
-        plugins: ['@babel/plugin-proposal-class-properties']
-      }));
+  .use('babel')
+  .tap((options) =>
+    merge(options, {
+      plugins: ['@babel/plugin-proposal-class-properties'],
+    }),
+  );
 ```
 
 #### Config module rules nested rules:
@@ -1195,6 +1161,7 @@ config.module
 ```
 
 #### Config module rules nested rules: ordering before
+
 Specify that the current `rule` context should operate before another named
 `rule`. You cannot use both `.before()` and `.after()` on the same `rule`.
 
@@ -1227,6 +1194,7 @@ config.module
 ```
 
 #### Config module rules nested rules: ordering after
+
 Specify that the current `rule` context should operate after another named
 `rule`. You cannot use both `.before()` and `.after()` on the same `rule`.
 
@@ -1284,63 +1252,59 @@ config.module
 ```
 
 #### Config module rules oneOfs (conditional rules): ordering before
+
 Specify that the current `oneOf` context should operate before another named
 `oneOf`. You cannot use both `.before()` and `.after()` on the same `oneOf`.
 
 ```js
-config.module
-  .rule(name)
-    .oneOf(name)
-      .before()
+config.module.rule(name).oneOf(name).before();
 
 // Example
 
 config.module
   .rule('scss')
-    .test(/\.scss$/)
-    .oneOf('normal')
-      .use('sass')
-        .loader('sass-loader')
-        .end()
-      .end()
-    .oneOf('sass-vars')
-      .before('normal')
-      .resourceQuery(/\?sassvars/)
-      .use('sass-vars')
-        .loader('sass-vars-to-js-loader')
+  .test(/\.scss$/)
+  .oneOf('normal')
+  .use('sass')
+  .loader('sass-loader')
+  .end()
+  .end()
+  .oneOf('sass-vars')
+  .before('normal')
+  .resourceQuery(/\?sassvars/)
+  .use('sass-vars')
+  .loader('sass-vars-to-js-loader');
 ```
 
 #### Config module rules oneOfs (conditional rules): ordering after
+
 Specify that the current `oneOf` context should operate after another named
 `oneOf`. You cannot use both `.before()` and `.after()` on the same `oneOf`.
 
 ```js
-config.module
-  .rule(name)
-    .oneOf(name)
-      .after()
+config.module.rule(name).oneOf(name).after();
 
 // Example
 
 config.module
   .rule('scss')
-    .test(/\.scss$/)
-    .oneOf('vue')
-      .resourceQuery(/\?vue/)
-      .use('vue-style')
-        .loader('vue-style-loader')
-        .end()
-      .end()
-    .oneOf('normal')
-      .use('sass')
-        .loader('sass-loader')
-        .end()
-      .end()
-    .oneOf('sass-vars')
-      .after('vue')
-      .resourceQuery(/\?sassvars/)
-      .use('sass-vars')
-        .loader('sass-vars-to-js-loader')
+  .test(/\.scss$/)
+  .oneOf('vue')
+  .resourceQuery(/\?vue/)
+  .use('vue-style')
+  .loader('vue-style-loader')
+  .end()
+  .end()
+  .oneOf('normal')
+  .use('sass')
+  .loader('sass-loader')
+  .end()
+  .end()
+  .oneOf('sass-vars')
+  .after('vue')
+  .resourceQuery(/\?sassvars/)
+  .use('sass-vars')
+  .loader('sass-vars-to-js-loader');
 ```
 
 #### Config module rules resolve
@@ -1351,17 +1315,14 @@ for modules that match the rule.
 See "Config resolve" sections above for full syntax.
 
 ```js
-config.module
-  .rule(name)
-    .resolve
+config.module.rule(name).resolve;
 
 // Example
 
 config.module
   .rule('scss')
-    .test(/\.scss$/)
-    .resolve
-      .symlinks(true)
+  .test(/\.scss$/)
+  .resolve.symlinks(true);
 ```
 
 ---
@@ -1379,7 +1340,7 @@ to match the layout below prior to passing to `.merge()`.
 ```js
 config.merge({ devtool: 'source-map' });
 
-config.get('devtool') // "source-map"
+config.get('devtool'); // "source-map"
 ```
 
 ```js
@@ -1405,7 +1366,7 @@ config.merge({
   watchOptions,
 
   entry: {
-    [name]: [...values]
+    [name]: [...values],
   },
 
   plugin: {
@@ -1413,8 +1374,8 @@ config.merge({
       plugin: RspackPlugin,
       args: [...args],
       before,
-      after
-    }
+      after,
+    },
   },
 
   devServer: {
@@ -1439,11 +1400,11 @@ config.merge({
     quiet,
     setup,
     stats,
-    watchContentBase
+    watchContentBase,
   },
 
   node: {
-    [key]: value
+    [key]: value,
   },
 
   optimization: {
@@ -1456,8 +1417,8 @@ config.merge({
         plugin: RspackPlugin,
         args: [...args],
         before,
-        after
-      }
+        after,
+      },
     },
     namedChunks,
     namedModules,
@@ -1480,14 +1441,14 @@ config.merge({
     hints,
     maxEntrypointSize,
     maxAssetSize,
-    assetFilter
+    assetFilter,
   },
 
   resolve: {
     [key]: value,
 
     alias: {
-      [key]: value
+      [key]: value,
     },
     aliasFields: [...values],
     descriptionFields: [...values],
@@ -1501,16 +1462,16 @@ config.merge({
         plugin: RspackPlugin,
         args: [...args],
         before,
-        after
-      }
-    }
+        after,
+      },
+    },
   },
 
   resolveLoader: {
     [key]: value,
 
     alias: {
-      [key]: value
+      [key]: value,
     },
     aliasFields: [...values],
     descriptionFields: [...values],
@@ -1526,9 +1487,9 @@ config.merge({
         plugin: RspackPlugin,
         args: [...args],
         before,
-        after
-      }
-    }
+        after,
+      },
+    },
   },
 
   module: {
@@ -1549,11 +1510,11 @@ config.merge({
         exclude: [...paths],
 
         rules: {
-          [name]: Rule
+          [name]: Rule,
         },
 
         oneOf: {
-          [name]: Rule
+          [name]: Rule,
         },
 
         use: {
@@ -1561,13 +1522,13 @@ config.merge({
             loader: LoaderString,
             options: LoaderOptions,
             before,
-            after
-          }
-        }
-      }
-    }
-  }
-})
+            after,
+          },
+        },
+      },
+    },
+  },
+});
 ```
 
 ### Conditional configuration
@@ -1582,22 +1543,19 @@ instance.
 
 ```js
 // Example: Only add minify plugin during production
-config
-  .when(process.env.NODE_ENV === 'production', config => {
-    config
-      .plugin('minify')
-      .use(BabiliRspackPlugin);
-  });
+config.when(process.env.NODE_ENV === 'production', (config) => {
+  config.plugin('minify').use(BabiliRspackPlugin);
+});
 ```
 
 ```js
 // Example: Only add minify plugin during production,
 // otherwise set devtool to source-map
-config
-  .when(process.env.NODE_ENV === 'production',
-    config => config.plugin('minify').use(BabiliRspackPlugin),
-    config => config.devtool('source-map')
-  );
+config.when(
+  process.env.NODE_ENV === 'production',
+  (config) => config.plugin('minify').use(BabiliRspackPlugin),
+  (config) => config.devtool('source-map'),
+);
 ```
 
 ### Inspecting generated configuration
@@ -1648,12 +1606,12 @@ sass.__expression = `require('sass')`;
 class MyPlugin {}
 MyPlugin.__expression = `require('my-plugin')`;
 
-function myFunction () {}
+function myFunction() {}
 myFunction.__expression = `require('my-function')`;
 
 config
   .plugin('example')
-    .use(MyPlugin, [{ fn: myFunction, implementation: sass, }]);
+  .use(MyPlugin, [{ fn: myFunction, implementation: sass }]);
 
 config.toString();
 
@@ -1675,7 +1633,7 @@ automatically:
 ```js
 config
   .plugin('env')
-    .use(require.resolve('webpack/lib/ProvidePlugin'), [{ jQuery: 'jquery' }])
+  .use(require.resolve('webpack/lib/ProvidePlugin'), [{ jQuery: 'jquery' }]);
 
 config.toString();
 
@@ -1710,7 +1668,7 @@ Config.toString({
       },
     ],
   },
-})
+});
 ```
 
 ```
