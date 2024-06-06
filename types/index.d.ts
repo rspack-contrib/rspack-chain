@@ -1,10 +1,10 @@
 import {
   Configuration,
   Compiler,
-  WebpackPluginInstance,
+  RspackPluginInstance,
   RuleSetRule,
   ResolveOptions,
-} from 'webpack';
+} from '@rspack/core';
 import * as https from 'https';
 
 export = Config;
@@ -53,7 +53,7 @@ declare namespace __Config {
   class ChainedSet<Parent> extends TypedChainedSet<Parent, any> {}
 }
 
-type WebpackConfig = Required<Configuration>;
+type RspackConfig = Required<Configuration>;
 declare class Config extends __Config.ChainedMap<void> {
   entryPoints: Config.TypedChainedMap<
     Config,
@@ -64,39 +64,39 @@ declare class Config extends __Config.ChainedMap<void> {
   node: Config.ChainedMap<this> & ((value: boolean) => this);
   optimization: Config.Optimization;
   performance: Config.Performance & ((value: boolean) => this);
-  plugins: Config.Plugins<this, WebpackPluginInstance>;
+  plugins: Config.Plugins<this, RspackPluginInstance>;
   resolve: Config.Resolve;
   resolveLoader: Config.ResolveLoader;
   devServer: Config.DevServer;
 
-  context(value: WebpackConfig['context']): this;
-  mode(value: WebpackConfig['mode']): this;
+  context(value: RspackConfig['context']): this;
+  mode(value: RspackConfig['mode']): this;
   devtool(value: Config.DevTool): this;
-  target(value: WebpackConfig['target']): this;
-  watch(value: WebpackConfig['watch']): this;
-  watchOptions(value: WebpackConfig['watchOptions']): this;
-  externals(value: WebpackConfig['externals']): this;
-  externalsType(value: WebpackConfig['externalsType']): this;
-  externalsPresets(value: WebpackConfig['externalsPresets']): this;
-  stats(value: WebpackConfig['stats']): this;
-  experiments(value: WebpackConfig['experiments']): this;
-  amd(value: WebpackConfig['amd']): this;
-  bail(value: WebpackConfig['bail']): this;
-  cache(value: WebpackConfig['cache']): this;
-  dependencies(value: WebpackConfig['dependencies']): this;
-  ignoreWarnings(value: WebpackConfig['ignoreWarnings']): this;
-  loader(value: WebpackConfig['loader']): this;
-  parallelism(value: WebpackConfig['parallelism']): this;
-  profile(value: WebpackConfig['profile']): this;
-  recordsPath(value: WebpackConfig['recordsPath']): this;
-  recordsInputPath(value: WebpackConfig['recordsInputPath']): this;
-  recordsOutputPath(value: WebpackConfig['recordsOutputPath']): this;
-  name(value: WebpackConfig['name']): this;
-  infrastructureLogging(value: WebpackConfig['infrastructureLogging']): this;
-  snapshot(value: WebpackConfig['snapshot']): this;
+  target(value: RspackConfig['target']): this;
+  watch(value: RspackConfig['watch']): this;
+  watchOptions(value: RspackConfig['watchOptions']): this;
+  externals(value: RspackConfig['externals']): this;
+  externalsType(value: RspackConfig['externalsType']): this;
+  externalsPresets(value: RspackConfig['externalsPresets']): this;
+  stats(value: RspackConfig['stats']): this;
+  experiments(value: RspackConfig['experiments']): this;
+  amd(value: RspackConfig['amd']): this;
+  bail(value: RspackConfig['bail']): this;
+  cache(value: RspackConfig['cache']): this;
+  dependencies(value: RspackConfig['dependencies']): this;
+  ignoreWarnings(value: RspackConfig['ignoreWarnings']): this;
+  loader(value: RspackConfig['loader']): this;
+  parallelism(value: RspackConfig['parallelism']): this;
+  profile(value: RspackConfig['profile']): this;
+  recordsPath(value: RspackConfig['recordsPath']): this;
+  recordsInputPath(value: RspackConfig['recordsInputPath']): this;
+  recordsOutputPath(value: RspackConfig['recordsOutputPath']): this;
+  name(value: RspackConfig['name']): this;
+  infrastructureLogging(value: RspackConfig['infrastructureLogging']): this;
+  snapshot(value: RspackConfig['snapshot']): this;
 
   entry(name: string): Config.EntryPoint;
-  plugin(name: string): Config.Plugin<this, WebpackPluginInstance>;
+  plugin(name: string): Config.Plugin<this, RspackPluginInstance>;
 
   toConfig(): Configuration;
 }
@@ -116,13 +116,13 @@ declare namespace Config {
 
   class Plugins<
     Parent,
-    PluginType extends WebpackPluginInstance,
+    PluginType extends RspackPluginInstance,
   > extends TypedChainedMap<
     Parent,
     { [key: string]: Plugin<Parent, PluginType> }
   > {}
 
-  class Plugin<Parent, PluginType extends WebpackPluginInstance | ResolvePlugin>
+  class Plugin<Parent, PluginType extends RspackPluginInstance | ResolvePlugin>
     extends ChainedMap<Parent>
     implements Orderable
   {
@@ -149,97 +149,97 @@ declare namespace Config {
     after(name: string): this;
   }
 
-  type WebpackEntry = NonNullable<Configuration['entry']>;
+  type RspackEntry = NonNullable<Configuration['entry']>;
 
   type WepackEntryObject = Exclude<
-    WebpackEntry,
+    RspackEntry,
     string | string[] | Function
   >[string];
 
   class EntryPoint extends TypedChainedSet<Config, WepackEntryObject> {}
 
-  type WebpackModule = Required<NonNullable<Configuration['module']>>;
+  type RspackModule = Required<NonNullable<Configuration['module']>>;
 
   class Module extends ChainedMap<Config> {
     rules: TypedChainedMap<this, { [key: string]: Rule }>;
     generator: ChainedMap<this>;
     parser: ChainedMap<this>;
     rule(name: string): Rule;
-    noParse(value: WebpackModule['noParse']): this;
-    unsafeCache(value: WebpackModule['unsafeCache']): this;
+    noParse(value: RspackModule['noParse']): this;
+    unsafeCache(value: RspackModule['unsafeCache']): this;
     wrappedContextCritical(
-      value: WebpackModule['wrappedContextCritical'],
+      value: RspackModule['wrappedContextCritical'],
     ): this;
-    exprContextRegExp(value: WebpackModule['exprContextRegExp']): this;
+    exprContextRegExp(value: RspackModule['exprContextRegExp']): this;
     wrappedContextRecursive(
-      value: WebpackModule['wrappedContextRecursive'],
+      value: RspackModule['wrappedContextRecursive'],
     ): this;
-    strictExportPresence(value: WebpackModule['strictExportPresence']): this;
-    wrappedContextRegExp(value: WebpackModule['wrappedContextRegExp']): this;
+    strictExportPresence(value: RspackModule['strictExportPresence']): this;
+    wrappedContextRegExp(value: RspackModule['wrappedContextRegExp']): this;
   }
 
-  type WebpackOutput = Required<NonNullable<Configuration['output']>>;
+  type RspackOutput = Required<NonNullable<Configuration['output']>>;
 
   class Output extends ChainedMap<Config> {
-    auxiliaryComment(value: WebpackOutput['auxiliaryComment']): this;
-    charset(value: WebpackOutput['charset']): this;
-    chunkFilename(value: WebpackOutput['chunkFilename']): this;
-    chunkLoadTimeout(value: WebpackOutput['chunkLoadTimeout']): this;
-    chunkLoadingGlobal(value: WebpackOutput['chunkLoadingGlobal']): this;
-    chunkLoading(value: WebpackOutput['chunkLoading']): this;
-    chunkFormat(value: WebpackOutput['chunkFormat']): this;
+    auxiliaryComment(value: RspackOutput['auxiliaryComment']): this;
+    charset(value: RspackOutput['charset']): this;
+    chunkFilename(value: RspackOutput['chunkFilename']): this;
+    chunkLoadTimeout(value: RspackOutput['chunkLoadTimeout']): this;
+    chunkLoadingGlobal(value: RspackOutput['chunkLoadingGlobal']): this;
+    chunkLoading(value: RspackOutput['chunkLoading']): this;
+    chunkFormat(value: RspackOutput['chunkFormat']): this;
     enabledChunkLoadingTypes(
-      value: WebpackOutput['enabledChunkLoadingTypes'],
+      value: RspackOutput['enabledChunkLoadingTypes'],
     ): this;
-    crossOriginLoading(value: WebpackOutput['crossOriginLoading']): this;
+    crossOriginLoading(value: RspackOutput['crossOriginLoading']): this;
     devtoolFallbackModuleFilenameTemplate(
-      value: WebpackOutput['devtoolFallbackModuleFilenameTemplate'],
+      value: RspackOutput['devtoolFallbackModuleFilenameTemplate'],
     ): this;
     devtoolModuleFilenameTemplate(
-      value: WebpackOutput['devtoolModuleFilenameTemplate'],
+      value: RspackOutput['devtoolModuleFilenameTemplate'],
     ): this;
-    devtoolNamespace(value: WebpackOutput['devtoolNamespace']): this;
-    filename(value: WebpackOutput['filename']): this;
-    assetModuleFilename(value: WebpackOutput['assetModuleFilename']): this;
-    globalObject(value: WebpackOutput['globalObject']): this;
-    uniqueName(value: WebpackOutput['uniqueName']): this;
-    hashDigest(value: WebpackOutput['hashDigest']): this;
-    hashDigestLength(value: WebpackOutput['hashDigestLength']): this;
-    hashFunction(value: WebpackOutput['hashFunction']): this;
-    hashSalt(value: WebpackOutput['hashSalt']): this;
+    devtoolNamespace(value: RspackOutput['devtoolNamespace']): this;
+    filename(value: RspackOutput['filename']): this;
+    assetModuleFilename(value: RspackOutput['assetModuleFilename']): this;
+    globalObject(value: RspackOutput['globalObject']): this;
+    uniqueName(value: RspackOutput['uniqueName']): this;
+    hashDigest(value: RspackOutput['hashDigest']): this;
+    hashDigestLength(value: RspackOutput['hashDigestLength']): this;
+    hashFunction(value: RspackOutput['hashFunction']): this;
+    hashSalt(value: RspackOutput['hashSalt']): this;
     hotUpdateChunkFilename(
-      value: WebpackOutput['hotUpdateChunkFilename'],
+      value: RspackOutput['hotUpdateChunkFilename'],
     ): this;
-    hotUpdateGlobal(value: WebpackOutput['hotUpdateGlobal']): this;
-    hotUpdateMainFilename(value: WebpackOutput['hotUpdateMainFilename']): this;
-    library(value: WebpackOutput['library']): this;
-    libraryExport(value: WebpackOutput['libraryExport']): this;
-    libraryTarget(value: WebpackOutput['libraryTarget']): this;
-    importFunctionName(value: WebpackOutput['importFunctionName']): this;
-    path(value: WebpackOutput['path']): this;
-    pathinfo(value: WebpackOutput['pathinfo']): this;
-    publicPath(value: WebpackOutput['publicPath']): this;
-    scriptType(value: WebpackOutput['scriptType']): this;
-    sourceMapFilename(value: WebpackOutput['sourceMapFilename']): this;
-    sourcePrefix(value: WebpackOutput['sourcePrefix']): this;
+    hotUpdateGlobal(value: RspackOutput['hotUpdateGlobal']): this;
+    hotUpdateMainFilename(value: RspackOutput['hotUpdateMainFilename']): this;
+    library(value: RspackOutput['library']): this;
+    libraryExport(value: RspackOutput['libraryExport']): this;
+    libraryTarget(value: RspackOutput['libraryTarget']): this;
+    importFunctionName(value: RspackOutput['importFunctionName']): this;
+    path(value: RspackOutput['path']): this;
+    pathinfo(value: RspackOutput['pathinfo']): this;
+    publicPath(value: RspackOutput['publicPath']): this;
+    scriptType(value: RspackOutput['scriptType']): this;
+    sourceMapFilename(value: RspackOutput['sourceMapFilename']): this;
+    sourcePrefix(value: RspackOutput['sourcePrefix']): this;
     strictModuleErrorHandling(
-      value: WebpackOutput['strictModuleErrorHandling'],
+      value: RspackOutput['strictModuleErrorHandling'],
     ): this;
     strictModuleExceptionHandling(
-      value: WebpackOutput['strictModuleExceptionHandling'],
+      value: RspackOutput['strictModuleExceptionHandling'],
     ): this;
-    umdNamedDefine(value: WebpackOutput['umdNamedDefine']): this;
-    workerChunkLoading(value: WebpackOutput['workerChunkLoading']): this;
-    enabledLibraryTypes(value: WebpackOutput['enabledLibraryTypes']): this;
-    environment(value: WebpackOutput['environment']): this;
-    compareBeforeEmit(value: WebpackOutput['compareBeforeEmit']): this;
-    wasmLoading(value: WebpackOutput['wasmLoading']): this;
+    umdNamedDefine(value: RspackOutput['umdNamedDefine']): this;
+    workerChunkLoading(value: RspackOutput['workerChunkLoading']): this;
+    enabledLibraryTypes(value: RspackOutput['enabledLibraryTypes']): this;
+    environment(value: RspackOutput['environment']): this;
+    compareBeforeEmit(value: RspackOutput['compareBeforeEmit']): this;
+    wasmLoading(value: RspackOutput['wasmLoading']): this;
     enabledWasmLoadingTypes(
-      value: WebpackOutput['enabledWasmLoadingTypes'],
+      value: RspackOutput['enabledWasmLoadingTypes'],
     ): this;
-    iife(value: WebpackOutput['iife']): this;
-    module(value: WebpackOutput['module']): this;
-    clean(value: WebpackOutput['clean']): this;
+    iife(value: RspackOutput['iife']): this;
+    module(value: RspackOutput['module']): this;
+    clean(value: RspackOutput['clean']): this;
   }
 
   // await for @types/webpack-dev-server update do v4 to remove all any
@@ -323,18 +323,18 @@ declare namespace Config {
     writeToDisk(value: boolean): this;
   }
 
-  type WebpackPerformance = Exclude<
+  type RspackPerformance = Exclude<
     Required<NonNullable<Configuration['performance']>>,
     false
   >;
   class Performance extends ChainedMap<Config> {
-    hints(value: WebpackPerformance['hints']): this;
-    maxEntrypointSize(value: WebpackPerformance['maxEntrypointSize']): this;
-    maxAssetSize(value: WebpackPerformance['maxAssetSize']): this;
-    assetFilter(value: WebpackPerformance['assetFilter']): this;
+    hints(value: RspackPerformance['hints']): this;
+    maxEntrypointSize(value: RspackPerformance['maxEntrypointSize']): this;
+    maxAssetSize(value: RspackPerformance['maxAssetSize']): this;
+    assetFilter(value: RspackPerformance['assetFilter']): this;
   }
 
-  type WebpackResolve = Required<NonNullable<Configuration['resolve']>>;
+  type RspackResolve = Required<NonNullable<Configuration['resolve']>>;
   type ResolvePlugin = Exclude<
     NonNullable<ResolveOptions['plugins']>[number],
     '...'
@@ -342,25 +342,25 @@ declare namespace Config {
 
   class Resolve<T = Config> extends ChainedMap<T> {
     alias: TypedChainedMap<this, { [key: string]: string | false | string[] }>;
-    aliasFields: TypedChainedSet<this, WebpackResolve['aliasFields'][number]>;
+    aliasFields: TypedChainedSet<this, RspackResolve['aliasFields'][number]>;
     descriptionFiles: TypedChainedSet<
       this,
-      WebpackResolve['descriptionFiles'][number]
+      RspackResolve['descriptionFiles'][number]
     >;
-    extensions: TypedChainedSet<this, WebpackResolve['extensions'][number]>;
-    mainFields: TypedChainedSet<this, WebpackResolve['mainFields'][number]>;
-    mainFiles: TypedChainedSet<this, WebpackResolve['mainFiles'][number]>;
+    extensions: TypedChainedSet<this, RspackResolve['extensions'][number]>;
+    mainFields: TypedChainedSet<this, RspackResolve['mainFields'][number]>;
+    mainFiles: TypedChainedSet<this, RspackResolve['mainFiles'][number]>;
     exportsFields: TypedChainedSet<
       this,
-      WebpackResolve['exportsFields'][number]
+      RspackResolve['exportsFields'][number]
     >;
     importsFields: TypedChainedSet<
       this,
-      WebpackResolve['importsFields'][number]
+      RspackResolve['importsFields'][number]
     >;
-    restrictions: TypedChainedSet<this, WebpackResolve['restrictions'][number]>;
-    roots: TypedChainedSet<this, WebpackResolve['roots'][number]>;
-    modules: TypedChainedSet<this, WebpackResolve['modules'][number]>;
+    restrictions: TypedChainedSet<this, RspackResolve['restrictions'][number]>;
+    roots: TypedChainedSet<this, RspackResolve['roots'][number]>;
+    modules: TypedChainedSet<this, RspackResolve['modules'][number]>;
     plugins: TypedChainedMap<
       this,
       { [key: string]: Plugin<Resolve, ResolvePlugin> }
@@ -369,15 +369,15 @@ declare namespace Config {
       this,
       { [key: string]: string | false | string[] }
     >;
-    byDependency: TypedChainedMap<this, WebpackResolve['byDependency']>;
+    byDependency: TypedChainedMap<this, RspackResolve['byDependency']>;
 
-    cachePredicate(value: WebpackResolve['cachePredicate']): this;
-    cacheWithContext(value: WebpackResolve['cacheWithContext']): this;
-    enforceExtension(value: WebpackResolve['enforceExtension']): this;
-    symlinks(value: WebpackResolve['symlinks']): this;
-    unsafeCache(value: WebpackResolve['unsafeCache']): this;
-    preferRelative(value: WebpackResolve['preferRelative']): this;
-    preferAbsolute(value: WebpackResolve['preferAbsolute']): this;
+    cachePredicate(value: RspackResolve['cachePredicate']): this;
+    cacheWithContext(value: RspackResolve['cacheWithContext']): this;
+    enforceExtension(value: RspackResolve['enforceExtension']): this;
+    symlinks(value: RspackResolve['symlinks']): this;
+    unsafeCache(value: RspackResolve['unsafeCache']): this;
+    preferRelative(value: RspackResolve['preferRelative']): this;
+    preferAbsolute(value: RspackResolve['preferAbsolute']): this;
 
     plugin(name: string): Plugin<this, ResolvePlugin>;
   }
@@ -392,28 +392,28 @@ declare namespace Config {
     packageMains: ChainedSet<this>;
   }
 
-  type WebpackRuleSet = Required<RuleSetRule>;
+  type RspackRuleSet = Required<RuleSetRule>;
 
   class Rule<T = Module> extends ChainedMap<T> implements Orderable {
     uses: TypedChainedMap<this, { [key: string]: Use }>;
-    include: TypedChainedSet<this, WebpackRuleSet['include']>;
-    exclude: TypedChainedSet<this, WebpackRuleSet['exclude']>;
+    include: TypedChainedSet<this, RspackRuleSet['include']>;
+    exclude: TypedChainedSet<this, RspackRuleSet['exclude']>;
     rules: TypedChainedMap<this, { [key: string]: Rule<Rule> }>;
     oneOfs: TypedChainedMap<this, { [key: string]: Rule<Rule> }>;
     resolve: RuleResolve<Rule<T>>;
 
-    enforce(value: WebpackRuleSet['enforce']): this;
-    issuer(value: WebpackRuleSet['issuer']): this;
-    issuerLayer(value: WebpackRuleSet['issuerLayer']): this;
-    layer(value: WebpackRuleSet['layer']): this;
-    mimetype(value: WebpackRuleSet['mimetype']): this;
-    parser(value: WebpackRuleSet['parser']): this;
-    generator(value: WebpackRuleSet['generator']): this;
-    resource(value: WebpackRuleSet['resource']): this;
-    resourceQuery(value: WebpackRuleSet['resourceQuery']): this;
-    sideEffects(value: WebpackRuleSet['sideEffects']): this;
-    test(value: WebpackRuleSet['test']): this;
-    type(value: WebpackRuleSet['type']): this;
+    enforce(value: RspackRuleSet['enforce']): this;
+    issuer(value: RspackRuleSet['issuer']): this;
+    issuerLayer(value: RspackRuleSet['issuerLayer']): this;
+    layer(value: RspackRuleSet['layer']): this;
+    mimetype(value: RspackRuleSet['mimetype']): this;
+    parser(value: RspackRuleSet['parser']): this;
+    generator(value: RspackRuleSet['generator']): this;
+    resource(value: RspackRuleSet['resource']): this;
+    resourceQuery(value: RspackRuleSet['resourceQuery']): this;
+    sideEffects(value: RspackRuleSet['sideEffects']): this;
+    test(value: RspackRuleSet['test']): this;
+    type(value: RspackRuleSet['type']): this;
 
     use(name: string): Use<this>;
     rule(name: string): Rule<Rule>;
@@ -424,38 +424,38 @@ declare namespace Config {
     after(name: string): this;
   }
 
-  type WebpackOptimization = Required<
+  type RspackOptimization = Required<
     NonNullable<Configuration['optimization']>
   >;
-  type SplitChunksObject = Exclude<WebpackOptimization['splitChunks'], false>;
+  type SplitChunksObject = Exclude<RspackOptimization['splitChunks'], false>;
   class Optimization extends ChainedMap<Config> {
-    minimizer(name: string): Config.Plugin<this, WebpackPluginInstance>;
+    minimizer(name: string): Config.Plugin<this, RspackPluginInstance>;
     splitChunks: TypedChainedMap<this, SplitChunksObject> &
       ((value: SplitChunksObject | false) => this);
 
-    minimize(value: WebpackOptimization['minimize']): this;
-    runtimeChunk(value: WebpackOptimization['runtimeChunk']): this;
-    emitOnErrors(value: WebpackOptimization['emitOnErrors']): this;
-    moduleIds(value: WebpackOptimization['moduleIds']): this;
-    chunkIds(value: WebpackOptimization['chunkIds']): this;
-    nodeEnv(value: WebpackOptimization['nodeEnv']): this;
-    mangleWasmImports(value: WebpackOptimization['mangleWasmImports']): this;
+    minimize(value: RspackOptimization['minimize']): this;
+    runtimeChunk(value: RspackOptimization['runtimeChunk']): this;
+    emitOnErrors(value: RspackOptimization['emitOnErrors']): this;
+    moduleIds(value: RspackOptimization['moduleIds']): this;
+    chunkIds(value: RspackOptimization['chunkIds']): this;
+    nodeEnv(value: RspackOptimization['nodeEnv']): this;
+    mangleWasmImports(value: RspackOptimization['mangleWasmImports']): this;
     removeAvailableModules(
-      value: WebpackOptimization['removeAvailableModules'],
+      value: RspackOptimization['removeAvailableModules'],
     ): this;
-    removeEmptyChunks(value: WebpackOptimization['removeEmptyChunks']): this;
+    removeEmptyChunks(value: RspackOptimization['removeEmptyChunks']): this;
     mergeDuplicateChunks(
-      value: WebpackOptimization['mergeDuplicateChunks'],
+      value: RspackOptimization['mergeDuplicateChunks'],
     ): this;
-    flagIncludedChunks(value: WebpackOptimization['flagIncludedChunks']): this;
-    providedExports(value: WebpackOptimization['providedExports']): this;
-    usedExports(value: WebpackOptimization['usedExports']): this;
-    concatenateModules(value: WebpackOptimization['concatenateModules']): this;
-    sideEffects(value: WebpackOptimization['sideEffects']): this;
-    portableRecords(value: WebpackOptimization['portableRecords']): this;
-    mangleExports(value: WebpackOptimization['mangleExports']): this;
-    innerGraph(value: WebpackOptimization['innerGraph']): this;
-    realContentHash(value: WebpackOptimization['realContentHash']): this;
+    flagIncludedChunks(value: RspackOptimization['flagIncludedChunks']): this;
+    providedExports(value: RspackOptimization['providedExports']): this;
+    usedExports(value: RspackOptimization['usedExports']): this;
+    concatenateModules(value: RspackOptimization['concatenateModules']): this;
+    sideEffects(value: RspackOptimization['sideEffects']): this;
+    portableRecords(value: RspackOptimization['portableRecords']): this;
+    mangleExports(value: RspackOptimization['mangleExports']): this;
+    innerGraph(value: RspackOptimization['innerGraph']): this;
+    realContentHash(value: RspackOptimization['realContentHash']): this;
   }
 
   interface RuntimeChunk {
@@ -587,7 +587,7 @@ declare namespace Config {
     | boolean;
 
   interface PluginClass<
-    PluginType extends WebpackPluginInstance | ResolvePlugin,
+    PluginType extends RspackPluginInstance | ResolvePlugin,
   > {
     new (...opts: any[]): PluginType;
   }

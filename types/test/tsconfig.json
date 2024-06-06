@@ -9,9 +9,9 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "webpack-chain": ["../index.d.ts"]
+      "rspack-chain": ["../index.d.ts"]
     }
   },
-  "files": ["../index.d.ts", "webpack-chain-tests.ts"],
+  "files": ["../index.d.ts", "rspack-chain-tests.ts"],
   "compileOnSave": false
 }

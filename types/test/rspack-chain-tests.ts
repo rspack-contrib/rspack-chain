@@ -3,8 +3,9 @@
  * of this document: https://github.com/neutrinojs/webpack-chain#config
  */
 import { Resolver } from 'enhanced-resolve';
-import Config = require('webpack-chain');
-import * as webpack from 'webpack';
+import * as webpack from '@rspack/core';
+
+import Config = require('rspack-chain');
 
 type ResolvePlugin = Exclude<
   Exclude<webpack.ResolveOptions['plugins'], undefined>[number],
