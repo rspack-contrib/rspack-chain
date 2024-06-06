@@ -1,14 +1,14 @@
 /**
  * Notes: The order structure of the type check follows the order
- * of this document: https://github.com/neutrinojs/webpack-chain#config
+ * of this document: https://github.com/neutrinojs/rspack-chain#config
  */
 import { Resolver } from 'enhanced-resolve';
-import * as webpack from '@rspack/core';
+import * as rspack from '@rspack/core';
 
 import Config = require('rspack-chain');
 
 type ResolvePlugin = Exclude<
-  Exclude<webpack.ResolveOptions['plugins'], undefined>[number],
+  Exclude<rspack.ResolveOptions['plugins'], undefined>[number],
   '...'
 >;
 
@@ -153,7 +153,7 @@ config
   .end()
   .rules.delete('compile')
   .end()
-  //** support https://webpack.js.org/configuration/module/#ruletype  */
+  //** support https://rspack.js.org/configuration/module/#ruletype  */
   .rule('mjs-compile')
   .test(/\.mjs$/)
   .type('javascript/auto')
@@ -210,7 +210,7 @@ config
   .end()
   .preferAbsolute(false)
   .plugin('foo')
-  .use(webpack.DefinePlugin)
+  .use(rspack.DefinePlugin)
   .end()
   .end()
   // optimization
@@ -233,13 +233,13 @@ config
   .set('chunks', 'all')
   .end()
   .minimizer('foo')
-  .use(webpack.DefinePlugin)
+  .use(rspack.DefinePlugin)
   .tap((config) => [])
   .end()
   .end()
   // plugins
   .plugin('foo')
-  .use(webpack.DefinePlugin, [
+  .use(rspack.DefinePlugin, [
     {
       'process.env.NODE_ENV': '',
     },
@@ -247,7 +247,7 @@ config
   .end()
 
   .plugin('bar')
-  .use(webpack.DefinePlugin, [
+  .use(rspack.DefinePlugin, [
     {
       'process.env.NODE_ENV': '',
     },
@@ -256,7 +256,7 @@ config
   .end()
 
   .plugin('baz')
-  .use(webpack.DefinePlugin, [
+  .use(rspack.DefinePlugin, [
     {
       'process.env.NODE_ENV': '',
     },
@@ -269,7 +269,7 @@ config
   .end()
 
   .plugin('asObject')
-  .use({ apply: (compiler: webpack.Compiler) => {} })
+  .use({ apply: (compiler: rspack.Compiler) => {} })
   .end()
 
   .plugins.delete('foo')
