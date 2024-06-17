@@ -34,7 +34,9 @@ module.exports = function createSet(superClass) {
     }
 
     merge(arr) {
-      this.store = new Set([...this.store, ...arr]);
+      if (arr !== undefined) {
+        this.store = new Set([...this.store, ...arr]);
+      }
       return this;
     }
 
