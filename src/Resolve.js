@@ -2,24 +2,33 @@ const ChainedMap = require('./ChainedMap');
 const ChainedSet = require('./ChainedSet');
 const Plugin = require('./Plugin');
 
+const childMaps = ['alias', 'fallback', 'byDependency'];
+const childSets = [
+  'aliasFields',
+  'conditionNames',
+  'descriptionFiles',
+  'extensions',
+  'mainFields',
+  'mainFiles',
+  'exportsFields',
+  'importsFields',
+  'restrictions',
+  'roots',
+  'modules',
+];
+
 module.exports = class extends ChainedMap {
   constructor(parent) {
     super(parent);
-    this.alias = new ChainedMap(this);
-    this.aliasFields = new ChainedSet(this);
-    this.conditionNames = new ChainedSet(this);
-    this.descriptionFiles = new ChainedSet(this);
-    this.extensions = new ChainedSet(this);
-    this.mainFields = new ChainedSet(this);
-    this.mainFiles = new ChainedSet(this);
-    this.exportsFields = new ChainedSet(this);
-    this.importsFields = new ChainedSet(this);
-    this.restrictions = new ChainedSet(this);
-    this.roots = new ChainedSet(this);
-    this.modules = new ChainedSet(this);
+
+    childMaps.forEach((key) => {
+      this[key] = new ChainedMap(this);
+    });
+    childSets.forEach((key) => {
+      this[key] = new ChainedSet(this);
+    });
+
     this.plugins = new ChainedMap(this);
-    this.fallback = new ChainedMap(this);
-    this.byDependency = new ChainedMap(this);
     this.extend([
       'cachePredicate',
       'cacheWithContext',
@@ -38,51 +47,39 @@ module.exports = class extends ChainedMap {
     );
   }
 
+  get(key) {
+    if (childMaps.includes(key)) {
+      return this[key].entries();
+    }
+    if (childSets.includes(key)) {
+      return this[key].values();
+    }
+    return super.get(key);
+  }
+
   toConfig() {
-    return this.clean(
-      Object.assign(this.entries() || {}, {
-        alias: this.alias.entries(),
-        aliasFields: this.aliasFields.values(),
-        conditionNames: this.conditionNames.values(),
-        descriptionFiles: this.descriptionFiles.values(),
-        extensions: this.extensions.values(),
-        mainFields: this.mainFields.values(),
-        mainFiles: this.mainFiles.values(),
-        modules: this.modules.values(),
-        exportsFields: this.exportsFields.values(),
-        importsFields: this.importsFields.values(),
-        restrictions: this.restrictions.values(),
-        roots: this.roots.values(),
-        fallback: this.fallback.entries(),
-        byDependency: this.byDependency.entries(),
-        plugins: this.plugins.values().map((plugin) => plugin.toConfig()),
-      }),
-    );
+    const config = Object.assign(this.entries() || {}, {
+      plugins: this.plugins.values().map((plugin) => plugin.toConfig()),
+    });
+
+    childMaps.forEach((key) => {
+      config[key] = this[key].entries();
+    });
+    childSets.forEach((key) => {
+      config[key] = this[key].values();
+    });
+
+    return this.clean(config);
   }
 
   merge(obj, omit = []) {
-    const omissions = [
-      'alias',
-      'aliasFields',
-      'byDependency',
-      'conditionNames',
-      'descriptionFiles',
-      'extensions',
-      'fallback',
-      'mainFields',
-      'mainFiles',
-      'exportsFields',
-      'importsFields',
-      'restrictions',
-      'roots',
-      'modules',
-    ];
-
     if (!omit.includes('plugin') && 'plugin' in obj) {
       Object.keys(obj.plugin).forEach((name) =>
         this.plugin(name).merge(obj.plugin[name]),
       );
     }
+
+    const omissions = [...childMaps, ...childSets];
 
     omissions.forEach((key) => {
       if (!omit.includes(key) && key in obj) {
