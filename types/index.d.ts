@@ -1,13 +1,19 @@
 import {
   Configuration,
   Compiler,
-  RspackPluginInstance,
   RuleSetRule,
   ResolveOptions,
 } from '@rspack/core';
 import * as https from 'https';
 
 export = Config;
+
+// The compiler type of Rspack / webpack are mismatch,
+// so we use a loose type here to allow using webpack plugins.
+interface PluginInstance {
+  apply: (compiler: any) => void;
+  [index: string]: any;
+}
 
 declare namespace __Config {
   class Chained<Parent> {
@@ -64,7 +70,7 @@ declare class Config extends __Config.ChainedMap<void> {
   node: Config.ChainedMap<this> & ((value: boolean) => this);
   optimization: Config.Optimization;
   performance: Config.Performance & ((value: boolean) => this);
-  plugins: Config.Plugins<this, RspackPluginInstance>;
+  plugins: Config.Plugins<this, PluginInstance>;
   resolve: Config.Resolve;
   resolveLoader: Config.ResolveLoader;
   devServer: Config.DevServer;
@@ -98,7 +104,7 @@ declare class Config extends __Config.ChainedMap<void> {
   snapshot(value: RspackConfig['snapshot']): this;
 
   entry(name: string): Config.EntryPoint;
-  plugin(name: string): Config.Plugin<this, RspackPluginInstance>;
+  plugin(name: string): Config.Plugin<this, PluginInstance>;
 
   toConfig(): Configuration;
 }
@@ -118,13 +124,13 @@ declare namespace Config {
 
   class Plugins<
     Parent,
-    PluginType extends RspackPluginInstance,
+    PluginType extends PluginInstance,
   > extends TypedChainedMap<
     Parent,
     { [key: string]: Plugin<Parent, PluginType> }
   > {}
 
-  class Plugin<Parent, PluginType extends RspackPluginInstance | ResolvePlugin>
+  class Plugin<Parent, PluginType extends PluginInstance | ResolvePlugin>
     extends ChainedMap<Parent>
     implements Orderable
   {
@@ -169,9 +175,7 @@ declare namespace Config {
     rule(name: string): Rule;
     noParse(value: RspackModule['noParse']): this;
     unsafeCache(value: RspackModule['unsafeCache']): this;
-    wrappedContextCritical(
-      value: RspackModule['wrappedContextCritical'],
-    ): this;
+    wrappedContextCritical(value: RspackModule['wrappedContextCritical']): this;
     exprContextRegExp(value: RspackModule['exprContextRegExp']): this;
     wrappedContextRecursive(
       value: RspackModule['wrappedContextRecursive'],
@@ -209,9 +213,7 @@ declare namespace Config {
     hashDigestLength(value: RspackOutput['hashDigestLength']): this;
     hashFunction(value: RspackOutput['hashFunction']): this;
     hashSalt(value: RspackOutput['hashSalt']): this;
-    hotUpdateChunkFilename(
-      value: RspackOutput['hotUpdateChunkFilename'],
-    ): this;
+    hotUpdateChunkFilename(value: RspackOutput['hotUpdateChunkFilename']): this;
     hotUpdateGlobal(value: RspackOutput['hotUpdateGlobal']): this;
     hotUpdateMainFilename(value: RspackOutput['hotUpdateMainFilename']): this;
     library(value: RspackOutput['library']): this;
@@ -345,7 +347,10 @@ declare namespace Config {
   class Resolve<T = Config> extends ChainedMap<T> {
     alias: TypedChainedMap<this, { [key: string]: string | false | string[] }>;
     aliasFields: TypedChainedSet<this, RspackResolve['aliasFields'][number]>;
-    conditionNames: TypedChainedSet<this, RspackResolve['conditionNames'][number]>;
+    conditionNames: TypedChainedSet<
+      this,
+      RspackResolve['conditionNames'][number]
+    >;
     descriptionFiles: TypedChainedSet<
       this,
       RspackResolve['descriptionFiles'][number]
@@ -432,7 +437,7 @@ declare namespace Config {
   >;
   type SplitChunksObject = Exclude<RspackOptimization['splitChunks'], false>;
   class Optimization extends ChainedMap<Config> {
-    minimizer(name: string): Config.Plugin<this, RspackPluginInstance>;
+    minimizer(name: string): Config.Plugin<this, PluginInstance>;
     splitChunks: TypedChainedMap<this, SplitChunksObject> &
       ((value: SplitChunksObject | false) => this);
 
@@ -589,9 +594,7 @@ declare namespace Config {
     | '#@hidden-source-map'
     | boolean;
 
-  interface PluginClass<
-    PluginType extends RspackPluginInstance | ResolvePlugin,
-  > {
+  interface PluginClass<PluginType extends PluginInstance | ResolvePlugin> {
     new (...opts: any[]): PluginType;
   }
 
