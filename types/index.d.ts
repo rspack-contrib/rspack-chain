@@ -70,7 +70,7 @@ declare class Config extends __Config.ChainedMap<void> {
   node: Config.ChainedMap<this> & ((value: boolean) => this);
   optimization: Config.Optimization;
   performance: Config.Performance & ((value: boolean) => this);
-  plugins: Config.Plugins<this, PluginInstance | PluginInstance>;
+  plugins: Config.Plugins<this, PluginInstance>;
   resolve: Config.Resolve;
   resolveLoader: Config.ResolveLoader;
   devServer: Config.DevServer;
