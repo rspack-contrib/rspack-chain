@@ -238,6 +238,8 @@ config
   .use(rspack.DefinePlugin)
   .tap((config) => [])
   .end()
+  .minimizers.delete('bar')
+  .end()
   .end()
   // plugins
   .plugin('foo')

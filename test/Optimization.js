@@ -65,6 +65,18 @@ test('minimizer plugin with args', () => {
   ]);
 });
 
+test('minimizer delete plugin', () => {
+  const optimization = new Optimization();
+
+  optimization.minimizer('foo').use(class Foo {});
+
+  expect(optimization.minimizers.has('foo')).toBe(true);
+
+  optimization.minimizers.delete('foo');
+
+  expect(optimization.minimizers.has('foo')).toBe(false);
+});
+
 test('minimizer plugin legacy syntax', () => {
   const optimization = new Optimization();
   expect(() => optimization.minimizer([new StringifyPlugin()])).toThrow(
