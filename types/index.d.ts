@@ -438,6 +438,7 @@ declare namespace Config {
   type SplitChunksObject = Exclude<RspackOptimization['splitChunks'], false>;
   class Optimization extends ChainedMap<Config> {
     minimizer(name: string): Config.Plugin<this, PluginInstance>;
+    minimizers: TypedChainedMap<this, Config.Plugin<this, PluginInstance>>;
     splitChunks: TypedChainedMap<this, SplitChunksObject> &
       ((value: SplitChunksObject | false) => this);
 
