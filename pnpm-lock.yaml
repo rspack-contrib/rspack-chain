@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       deepmerge:
-        specifier: ^1.5.2
-        version: 1.5.2
+        specifier: ^4.3.1
+        version: 4.3.1
       javascript-stringify:
         specifier: ^2.0.1
         version: 2.1.0
@@ -706,10 +706,6 @@ packages:
 
   dedent@0.7.0:
     resolution: {integrity: sha512-Q6fKUPqnAHAyhiUgFU7BUzLiv0kd8saH9al7tnu5Q/okj6dnupxyTgFIBjVzJATdfIAm9NAsvXNzjaKa+bxVyA==}
-
-  deepmerge@1.5.2:
-    resolution: {integrity: sha512-95k0GDqvBjZavkuvzx/YqVLv/6YYa17fz6ILMSf7neqQITCPbnfEnQvEgMPNjH4kgobe7+WIL0yJEHku+H3qtQ==}
-    engines: {node: '>=0.10.0'}
 
   deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
@@ -2480,8 +2476,6 @@ snapshots:
   decimal.js@10.4.3: {}
 
   dedent@0.7.0: {}
-
-  deepmerge@1.5.2: {}
 
   deepmerge@4.3.1: {}
 
