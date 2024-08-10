@@ -1,19 +1,15 @@
 {
   "name": "rspack-chain",
-  "version": "0.7.4",
+  "version": "1.0.0",
   "main": "src/Config.js",
   "typings": "types/index.d.ts",
   "repository": "rspack-contrib/rspack-chain",
   "keywords": [
     "rspack",
-    "webpack",
     "config",
     "chain",
     "api"
   ],
-  "engines": {
-    "node": ">=16"
-  },
   "files": [
     "src",
     "types/*.d.ts"
