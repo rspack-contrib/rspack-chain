@@ -37,6 +37,7 @@ module.exports = class extends ChainedMap {
       'unsafeCache',
       'preferRelative',
       'preferAbsolute',
+      'tsConfig',
     ]);
   }
 

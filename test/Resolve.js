@@ -185,3 +185,25 @@ test('plugin with args', () => {
     'beta',
   ]);
 });
+
+test('tsConfig string', () => {
+  const resolve = new Resolve();
+  resolve.tsConfig('./tsconfig.json').end();
+  expect(resolve.toConfig()).toStrictEqual({
+    tsConfig: './tsconfig.json',
+  });
+});
+
+test('tsConfig object', () => {
+  const resolve = new Resolve();
+  resolve.tsConfig({
+    configFile: './tsconfig.json',
+    references: 'auto',
+  })
+  expect(resolve.toConfig()).toStrictEqual({
+    tsConfig: {
+      configFile: './tsconfig.json',
+      references: 'auto',
+    },
+  });
+});
