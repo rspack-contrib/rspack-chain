@@ -164,6 +164,12 @@ config
   .set('foo', false)
   .set('foo', ['asd'])
   .end()
+  .tsConfig('./tsconfig.json')
+  .delete('tsConfig')
+  .tsConfig({
+    configFile: './tsconfig.json',
+    references: 'auto',
+  })
   .modules.add('index.js')
   .end()
   .aliasFields.add('foo')

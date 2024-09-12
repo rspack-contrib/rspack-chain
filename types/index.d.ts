@@ -388,6 +388,7 @@ declare namespace Config {
     preferAbsolute(value: RspackResolve['preferAbsolute']): this;
 
     plugin(name: string): Plugin<this, ResolvePlugin>;
+    tsConfig(value: RspackResolve['tsConfig']): this;
   }
 
   class RuleResolve<T = Config> extends Resolve<T> {
