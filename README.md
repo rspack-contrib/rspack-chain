@@ -488,6 +488,10 @@ config.resolve
   .unsafeCache(unsafeCache)
   .preferRelative(preferRelative)
   .preferAbsolute(preferAbsolute)
+  .tsConfig({
+    configFile: './tsconfig.json',
+    references: 'auto',
+  });
 ```
 
 #### Config resolve alias
