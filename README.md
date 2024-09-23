@@ -550,6 +550,17 @@ config.resolve.extensions
   .clear()
 ```
 
+#### Config resolve extensionAlias
+
+```js
+config.resolve.extensionAlias : ChainedSet
+
+config.resolve.extensionAlias
+  .add(value)
+  .prepend(value)
+  .clear()
+```
+
 #### Config resolve mainFields
 
 ```js

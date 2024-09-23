@@ -199,11 +199,21 @@ test('tsConfig object', () => {
   resolve.tsConfig({
     configFile: './tsconfig.json',
     references: 'auto',
-  })
+  });
   expect(resolve.toConfig()).toStrictEqual({
     tsConfig: {
       configFile: './tsconfig.json',
       references: 'auto',
     },
+  });
+});
+
+test('extensionAlias', () => {
+  const resolve = new Resolve();
+  const instance = resolve.extensionAlias.add('.ts').add('.js').end();
+
+  expect(instance).toBe(resolve);
+  expect(resolve.toConfig()).toStrictEqual({
+    extensionAlias: ['.ts', '.js'],
   });
 });
