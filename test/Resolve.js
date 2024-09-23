@@ -210,10 +210,13 @@ test('tsConfig object', () => {
 
 test('extensionAlias', () => {
   const resolve = new Resolve();
-  const instance = resolve.extensionAlias.add('.ts').add('.js').end();
+  const instance = resolve.extensionAlias
+    .set('.a', '.b')
+    .set('.b', ['.c', '.d'])
+    .end();
 
   expect(instance).toBe(resolve);
   expect(resolve.toConfig()).toStrictEqual({
-    extensionAlias: ['.ts', '.js'],
+    extensionAlias: { '.a': '.b', '.b': ['.c', '.d'] },
   });
 });

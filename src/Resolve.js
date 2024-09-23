@@ -2,13 +2,12 @@ const ChainedMap = require('./ChainedMap');
 const ChainedSet = require('./ChainedSet');
 const Plugin = require('./Plugin');
 
-const childMaps = ['alias', 'fallback', 'byDependency'];
+const childMaps = ['alias', 'fallback', 'byDependency', 'extensionAlias'];
 const childSets = [
   'aliasFields',
   'conditionNames',
   'descriptionFiles',
   'extensions',
-  'extensionAlias',
   'mainFields',
   'mainFiles',
   'exportsFields',
