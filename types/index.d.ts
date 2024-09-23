@@ -356,6 +356,7 @@ declare namespace Config {
       RspackResolve['descriptionFiles'][number]
     >;
     extensions: TypedChainedSet<this, RspackResolve['extensions'][number]>;
+    extensionAlias: TypedChainedSet<this, RspackResolve['extensionAlias'][number]>;
     mainFields: TypedChainedSet<this, RspackResolve['mainFields'][number]>;
     mainFiles: TypedChainedSet<this, RspackResolve['mainFiles'][number]>;
     exportsFields: TypedChainedSet<

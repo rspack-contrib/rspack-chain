@@ -8,6 +8,7 @@ const childSets = [
   'conditionNames',
   'descriptionFiles',
   'extensions',
+  'extensionAlias',
   'mainFields',
   'mainFiles',
   'exportsFields',
