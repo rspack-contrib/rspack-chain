@@ -553,11 +553,10 @@ config.resolve.extensions
 #### Config resolve extensionAlias
 
 ```js
-config.resolve.extensionAlias : ChainedSet
+config.resolve.extensionAlias : ChainedMap
 
 config.resolve.extensionAlias
-  .add(value)
-  .prepend(value)
+  .set(key, value)
   .clear()
 ```
 
