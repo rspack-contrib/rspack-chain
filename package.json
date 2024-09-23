@@ -31,7 +31,7 @@
     "javascript-stringify": "^2.0.1"
   },
   "devDependencies": {
-    "@rspack/core": "^1.0.0-beta.4",
+    "@rspack/core": "^1.0.5",
     "@types/enhanced-resolve": "^3.0.6",
     "@types/tapable": "^1.0.6",
     "enhanced-resolve": "^5.8.2",
