@@ -107,6 +107,9 @@ config
   .issuerLayer('asd')
   .sideEffects(true)
   .mimetype('application/json')
+  .with({
+    type: 'url'
+  })
   .generator({
     asset: {
       publicPath: 'assets/',
