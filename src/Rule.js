@@ -41,6 +41,7 @@ const Rule = Orderable(
         'parser',
         'generator',
         'resource',
+        'resourceFragment',
         'resourceQuery',
         'sideEffects',
         'test',

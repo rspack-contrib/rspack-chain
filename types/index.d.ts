@@ -421,6 +421,7 @@ declare namespace Config {
     parser(value: RspackRuleSet['parser']): this;
     generator(value: RspackRuleSet['generator']): this;
     resource(value: RspackRuleSet['resource']): this;
+    resourceFragment(value: RspackRuleSet['resourceFragment']): this;
     resourceQuery(value: RspackRuleSet['resourceQuery']): this;
     sideEffects(value: RspackRuleSet['sideEffects']): this;
     test(value: RspackRuleSet['test']): this;
