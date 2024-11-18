@@ -424,6 +424,7 @@ declare namespace Config {
     resourceFragment(value: RspackRuleSet['resourceFragment']): this;
     resourceQuery(value: RspackRuleSet['resourceQuery']): this;
     sideEffects(value: RspackRuleSet['sideEffects']): this;
+    with(value: RspackRuleSet['with']): this;
     test(value: RspackRuleSet['test']): this;
     type(value: RspackRuleSet['type']): this;
 

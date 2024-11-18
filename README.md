@@ -1543,7 +1543,9 @@ config.merge({
         mimetype,
         parser,
         resource,
+        resourceFragment,
         resourceQuery,
+        with,
         test,
 
         include: [...paths],
