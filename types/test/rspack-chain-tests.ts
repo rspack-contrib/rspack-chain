@@ -146,7 +146,6 @@ config
   .uses.delete('babel')
   .end()
   .resourceQuery(/inline/)
-  .resourceFragment(/foo/)
   .use('url')
   .loader('url-loader')
   .end()
