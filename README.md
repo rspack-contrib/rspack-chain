@@ -1536,8 +1536,11 @@ config.merge({
       [name]: {
         [key]: value,
 
+        dependency,
         enforce,
         issuer,
+        issuerLayer,
+        mimetype,
         parser,
         resource,
         resourceQuery,

@@ -412,6 +412,7 @@ declare namespace Config {
     oneOfs: TypedChainedMap<this, { [key: string]: Rule<Rule> }>;
     resolve: RuleResolve<Rule<T>>;
 
+    dependency(value: RspackRuleSet['dependency']): this;
     enforce(value: RspackRuleSet['enforce']): this;
     issuer(value: RspackRuleSet['issuer']): this;
     issuerLayer(value: RspackRuleSet['issuerLayer']): this;
