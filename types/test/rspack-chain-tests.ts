@@ -102,6 +102,8 @@ config
     opt: 'foo',
   })
   .enforce('pre')
+  .dependency('asd')
+  .issuer('asd')
   .issuerLayer('asd')
   .sideEffects(true)
   .mimetype('application/json')
