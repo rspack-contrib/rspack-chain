@@ -22,8 +22,8 @@ importers:
         specifier: ^3.0.6
         version: 3.0.7
       '@types/tapable':
-        specifier: ^1.0.6
-        version: 1.0.12
+        specifier: ^2.0.0
+        version: 2.2.7
       enhanced-resolve:
         specifier: ^5.8.2
         version: 5.17.1
@@ -412,8 +412,8 @@ packages:
   '@types/tapable@0.2.9':
     resolution: {integrity: sha512-SBDYUqhRCLeIEBedB+NAzFpxvst6rYFkxLjpQnqBPfXHsihSgSNhBwqxcIVJenwXvYkxxIRucFLKY87zq5lLlw==}
 
-  '@types/tapable@1.0.12':
-    resolution: {integrity: sha512-bTHG8fcxEqv1M9+TD14P8ok8hjxoOCkfKc8XXLaaD05kI7ohpeI956jtDOD3XHKBQrlyPughUtzm1jtVhHpA5Q==}
+  '@types/tapable@2.2.7':
+    resolution: {integrity: sha512-D6QzACV9vNX3r8HQQNTOnpG+Bv1rko+yEA82wKs3O9CQ5+XW7HI7TED17/UE7+5dIxyxZIWTxKbsBeF6uKFCwA==}
 
   '@types/yargs-parser@21.0.3':
     resolution: {integrity: sha512-I4q9QU9MQv4oEOz4tAHJtNz1cwuLxn2F3xcc2iV5WdqLPpUnj30aUuxt1mAxYTG+oe8CZMV/+6rU4S4gRDzqtQ==}
@@ -2094,7 +2094,9 @@ snapshots:
 
   '@types/tapable@0.2.9': {}
 
-  '@types/tapable@1.0.12': {}
+  '@types/tapable@2.2.7':
+    dependencies:
+      tapable: 2.2.1
 
   '@types/yargs-parser@21.0.3': {}
 
