@@ -19,8 +19,8 @@ importers:
         specifier: ^1.0.5
         version: 1.0.14
       '@types/enhanced-resolve':
-        specifier: ^3.0.6
-        version: 3.0.7
+        specifier: ^5.0.0
+        version: 5.0.2
       '@types/tapable':
         specifier: ^1.0.6
         version: 1.0.12
@@ -379,8 +379,9 @@ packages:
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
 
-  '@types/enhanced-resolve@3.0.7':
-    resolution: {integrity: sha512-H23Fzk0BCz4LoKq1ricnLSRQuzoXTv57bGUwC+Cn84kKPaoHIS7bhFhfy4DzMeSBxoXc6jFziYoqpCab1U511w==}
+  '@types/enhanced-resolve@5.0.2':
+    resolution: {integrity: sha512-e8MGxsxDRmhTzIQ6jq1kP+6rkD7fafGPnQ04fBtTuldoKWfCkTWv51VawnrTEprqJhk0LwngUdpdnNsKozLxKg==}
+    deprecated: This is a stub types definition. enhanced-resolve provides its own type definitions, so you do not need this installed.
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -408,9 +409,6 @@ packages:
 
   '@types/stack-utils@2.0.3':
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
-
-  '@types/tapable@0.2.9':
-    resolution: {integrity: sha512-SBDYUqhRCLeIEBedB+NAzFpxvst6rYFkxLjpQnqBPfXHsihSgSNhBwqxcIVJenwXvYkxxIRucFLKY87zq5lLlw==}
 
   '@types/tapable@1.0.12':
     resolution: {integrity: sha512-bTHG8fcxEqv1M9+TD14P8ok8hjxoOCkfKc8XXLaaD05kI7ohpeI956jtDOD3XHKBQrlyPughUtzm1jtVhHpA5Q==}
@@ -2061,10 +2059,9 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.0
 
-  '@types/enhanced-resolve@3.0.7':
+  '@types/enhanced-resolve@5.0.2':
     dependencies:
-      '@types/node': 22.8.1
-      '@types/tapable': 0.2.9
+      enhanced-resolve: 5.17.1
 
   '@types/estree@1.0.6': {}
 
@@ -2091,8 +2088,6 @@ snapshots:
   '@types/prettier@2.7.3': {}
 
   '@types/stack-utils@2.0.3': {}
-
-  '@types/tapable@0.2.9': {}
 
   '@types/tapable@1.0.12': {}
 
