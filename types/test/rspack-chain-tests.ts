@@ -2,7 +2,6 @@
  * Notes: The order structure of the type check follows the order
  * of this document: https://github.com/neutrinojs/rspack-chain#config
  */
-import { Resolver } from 'enhanced-resolve';
 import * as rspack from '@rspack/core';
 
 import Config = require('rspack-chain');
@@ -13,7 +12,7 @@ type ResolvePlugin = Exclude<
 >;
 
 class ResolvePluginImpl implements ResolvePlugin {
-  apply(resolver: Resolver): void {}
+  apply(resolver: any): void {}
 }
 
 function expectType<T>(value: T) {}
