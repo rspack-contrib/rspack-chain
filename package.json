@@ -33,7 +33,7 @@
   "devDependencies": {
     "@rspack/core": "^1.0.5",
     "@types/enhanced-resolve": "^5.0.0",
-    "@types/tapable": "^1.0.6",
+    "@types/tapable": "^2.0.0",
     "enhanced-resolve": "^5.8.2",
     "jest": "^27.0.0",
     "prettier": "^2.0.5",
