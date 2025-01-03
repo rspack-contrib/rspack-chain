@@ -27,6 +27,7 @@ module.exports = class extends ChainedMap {
       'mangleExports',
       'innerGraph',
       'realContentHash',
+      'avoidEntryIife',
     ]);
   }
 

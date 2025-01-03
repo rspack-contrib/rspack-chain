@@ -470,6 +470,7 @@ declare namespace Config {
     mangleExports(value: RspackOptimization['mangleExports']): this;
     innerGraph(value: RspackOptimization['innerGraph']): this;
     realContentHash(value: RspackOptimization['realContentHash']): this;
+    avoidEntryIife(value: RspackOptimization['avoidEntryIife']): this;
   }
 
   interface RuntimeChunk {

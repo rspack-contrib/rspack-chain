@@ -245,6 +245,7 @@ config
   .runtimeChunk({ name: ({}) => 'hello' })
   .sideEffects(true)
   .usedExports(true)
+  .avoidEntryIife(true)
   .splitChunks(false)
   .splitChunks.set('chunks', 'all')
   .set('chunks', 'all')
