@@ -159,12 +159,12 @@ declare namespace Config {
 
   type RspackEntry = NonNullable<Configuration['entry']>;
 
-  type WepackEntryObject = Exclude<
+  type RspackEntryObject = Exclude<
     RspackEntry,
     string | string[] | Function
   >[string];
 
-  class EntryPoint extends TypedChainedSet<Config, WepackEntryObject> {}
+  class EntryPoint extends TypedChainedSet<Config, RspackEntryObject> {}
 
   type RspackModule = Required<NonNullable<Configuration['module']>>;
 

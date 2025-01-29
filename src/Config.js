@@ -10,6 +10,49 @@ const Module = require('./Module');
 const Optimization = require('./Optimization');
 const Performance = require('./Performance');
 
+const castArray = (value) => (Array.isArray(value) ? value : [value]);
+
+const toEntryObject = (entryPoints) => {
+  const entry = Object.keys(entryPoints).reduce(
+    (acc, key) => Object.assign(acc, { [key]: entryPoints[key].values() }),
+    {},
+  );
+
+  const formattedEntry = {};
+
+  for (const [entryName, entryValue] of Object.entries(entry)) {
+    const entryImport = [];
+    let entryDescription = null;
+
+    for (const item of castArray(entryValue)) {
+      if (typeof item === 'string') {
+        entryImport.push(item);
+        continue;
+      }
+
+      if (item.import) {
+        entryImport.push(...castArray(item.import));
+      }
+
+      if (entryDescription) {
+        // merge entry description object
+        Object.assign(entryDescription, item);
+      } else {
+        entryDescription = item;
+      }
+    }
+
+    formattedEntry[entryName] = entryDescription
+      ? {
+          ...entryDescription,
+          import: entryImport,
+        }
+      : entryImport;
+  }
+
+  return formattedEntry;
+};
+
 module.exports = class extends ChainedMap {
   constructor() {
     super();
@@ -155,11 +198,7 @@ module.exports = class extends ChainedMap {
         optimization: this.optimization.toConfig(),
         plugins: this.plugins.values().map((plugin) => plugin.toConfig()),
         performance: this.performance.entries(),
-        entry: Object.keys(entryPoints).reduce(
-          (acc, key) =>
-            Object.assign(acc, { [key]: entryPoints[key].values() }),
-          {},
-        ),
+        entry: toEntryObject(entryPoints),
       }),
     );
   }
