@@ -115,6 +115,52 @@ test('entry', () => {
     'babel-polyfill',
     'src/index.js',
   ]);
+  expect(config.toConfig().entry).toStrictEqual({
+    index: ['babel-polyfill', 'src/index.js'],
+  });
+});
+
+test('entry description object', () => {
+  const config = new Config();
+
+  config
+    .entry('index')
+    .add('babel-polyfill')
+    .add({
+      import: ['src/index.js'],
+      dependOn: 'shared',
+    });
+
+  config.entry('foo').add({
+    import: ['src/foo.js'],
+  });
+
+  config
+    .entry('bar')
+    .add({
+      import: ['src/bar.js'],
+      chunkLoading: 'jsonp',
+    })
+    .add({
+      import: ['src/baz.js'],
+      layer: 'name of layer',
+    })
+    .add('src/qux.js');
+
+  expect(config.toConfig().entry).toStrictEqual({
+    index: {
+      import: ['babel-polyfill', 'src/index.js'],
+      dependOn: 'shared',
+    },
+    foo: {
+      import: ['src/foo.js'],
+    },
+    bar: {
+      chunkLoading: 'jsonp',
+      import: ['src/bar.js', 'src/baz.js', 'src/qux.js'],
+      layer: 'name of layer',
+    },
+  });
 });
 
 test('plugin empty', () => {
