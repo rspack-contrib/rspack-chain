@@ -15,7 +15,7 @@
     "types/*.d.ts"
   ],
   "author": "rspack-contrib",
-  "license": "MPL-2.0",
+  "license": "MIT",
   "packageManager": "pnpm@9.12.2",
   "scripts": {
     "fix": "yarn lint:fix && yarn style:fix",
