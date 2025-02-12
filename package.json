@@ -33,7 +33,7 @@
   "devDependencies": {
     "@rspack/core": "^1.2.0-alpha.0",
     "jest": "^27.0.0",
-    "prettier": "^2.0.5",
+    "prettier": "^3.0.0",
     "typescript": "^5.0.0",
     "webpack": "^5.91.0"
   }
