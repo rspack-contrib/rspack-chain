@@ -16,7 +16,7 @@
   ],
   "author": "rspack-contrib",
   "license": "MIT",
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@10.5.0",
   "scripts": {
     "fix": "yarn lint:fix && yarn style:fix",
     "lint": "echo 'pass'",
