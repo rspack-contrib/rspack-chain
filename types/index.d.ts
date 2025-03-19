@@ -32,7 +32,7 @@ declare namespace __Config {
     set<T extends keyof OptionsType>(key: T, value: OptionsType[T]): this;
     merge(obj: Partial<OptionsType>): this;
     entries(): OptionsType;
-    values<T extends keyof OptionsType>(): [OptionsType[T]][];
+    values<T extends keyof OptionsType>(): OptionsType[T][];
     when(
       condition: boolean,
       trueBrancher: (obj: this) => void,
