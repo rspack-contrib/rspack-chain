@@ -7,6 +7,7 @@ import * as rspack from '@rspack/core';
 import Config = require('rspack-chain');
 
 type ResolvePlugin = Exclude<
+  // @ts-expect-error Rspack does not supports resolve plugin
   Exclude<rspack.ResolveOptions['plugins'], undefined>[number],
   '...'
 >;
@@ -78,8 +79,9 @@ config
   .strictModuleExceptionHandling(true)
   .iife(true)
   .umdNamedDefine(true)
+  .webassemblyModuleFilename('[id].[hash].wasm')
   .clean({
-    dry: true,
+    keep: 'foo',
   })
   .end()
   // module
@@ -107,7 +109,7 @@ config
   .sideEffects(true)
   .mimetype('application/json')
   .with({
-    type: 'url'
+    type: 'url',
   })
   .generator({
     asset: {

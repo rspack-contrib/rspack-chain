@@ -238,6 +238,9 @@ declare namespace Config {
     environment(value: RspackOutput['environment']): this;
     compareBeforeEmit(value: RspackOutput['compareBeforeEmit']): this;
     wasmLoading(value: RspackOutput['wasmLoading']): this;
+    webassemblyModuleFilename(
+      value: RspackOutput['webassemblyModuleFilename'],
+    ): this;
     enabledWasmLoadingTypes(
       value: RspackOutput['enabledWasmLoadingTypes'],
     ): this;
@@ -340,6 +343,7 @@ declare namespace Config {
 
   type RspackResolve = Required<NonNullable<Configuration['resolve']>>;
   type ResolvePlugin = Exclude<
+    // @ts-expect-error Rspack does not supports resolve plugin
     NonNullable<ResolveOptions['plugins']>[number],
     '...'
   >;

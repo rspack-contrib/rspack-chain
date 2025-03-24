@@ -45,6 +45,7 @@ module.exports = class extends ChainedMap {
       'environment',
       'compareBeforeEmit',
       'wasmLoading',
+      'webassemblyModuleFilename',
       'enabledWasmLoadingTypes',
       'iife',
       'module',
