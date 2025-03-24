@@ -80,7 +80,7 @@ config
   .umdNamedDefine(true)
   .webassemblyModuleFilename('[id].[hash].wasm')
   .clean({
-    dry: true,
+    keep: 'foo',
   })
   .end()
   // module
