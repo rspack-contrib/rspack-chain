@@ -238,6 +238,7 @@ declare namespace Config {
     environment(value: RspackOutput['environment']): this;
     compareBeforeEmit(value: RspackOutput['compareBeforeEmit']): this;
     wasmLoading(value: RspackOutput['wasmLoading']): this;
+    webassemblyModuleFilename(value: RspackOutput['webassemblyModuleFilename']): this;
     enabledWasmLoadingTypes(
       value: RspackOutput['enabledWasmLoadingTypes'],
     ): this;

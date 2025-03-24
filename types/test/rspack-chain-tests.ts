@@ -78,6 +78,7 @@ config
   .strictModuleExceptionHandling(true)
   .iife(true)
   .umdNamedDefine(true)
+  .webassemblyModuleFilename('[id].[hash].wasm')
   .clean({
     dry: true,
   })
