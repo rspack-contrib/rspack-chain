@@ -88,16 +88,19 @@ declare class Config extends __Config.ChainedMap<void> {
   experiments(value: RspackConfig['experiments']): this;
   amd(value: RspackConfig['amd']): this;
   bail(value: RspackConfig['bail']): this;
-  // TODO: Rspack does not support cache yet
+  // Rspack only supports boolean cache
   cache(value: any): this;
-  // cache(value: RspackConfig['cache']): this;
   dependencies(value: RspackConfig['dependencies']): this;
   ignoreWarnings(value: RspackConfig['ignoreWarnings']): this;
   loader(value: RspackConfig['loader']): this;
+  // @ts-expect-error not supported by Rspack
   parallelism(value: RspackConfig['parallelism']): this;
   profile(value: RspackConfig['profile']): this;
+  // @ts-expect-error not supported by Rspack
   recordsPath(value: RspackConfig['recordsPath']): this;
+  // @ts-expect-error not supported by Rspack
   recordsInputPath(value: RspackConfig['recordsInputPath']): this;
+  // @ts-expect-error not supported by Rspack
   recordsOutputPath(value: RspackConfig['recordsOutputPath']): this;
   name(value: RspackConfig['name']): this;
   infrastructureLogging(value: RspackConfig['infrastructureLogging']): this;
@@ -174,13 +177,19 @@ declare namespace Config {
     parser: ChainedMap<this>;
     rule(name: string): Rule;
     noParse(value: RspackModule['noParse']): this;
+    // @ts-expect-error not supported by Rspack
     unsafeCache(value: RspackModule['unsafeCache']): this;
+    // @ts-expect-error not supported by Rspack
     wrappedContextCritical(value: RspackModule['wrappedContextCritical']): this;
+    // @ts-expect-error not supported by Rspack
     exprContextRegExp(value: RspackModule['exprContextRegExp']): this;
     wrappedContextRecursive(
+      // @ts-expect-error not supported by Rspack
       value: RspackModule['wrappedContextRecursive'],
     ): this;
+    // @ts-expect-error not supported by Rspack
     strictExportPresence(value: RspackModule['strictExportPresence']): this;
+    // @ts-expect-error not supported by Rspack
     wrappedContextRegExp(value: RspackModule['wrappedContextRegExp']): this;
   }
 
@@ -225,6 +234,7 @@ declare namespace Config {
     publicPath(value: RspackOutput['publicPath']): this;
     scriptType(value: RspackOutput['scriptType']): this;
     sourceMapFilename(value: RspackOutput['sourceMapFilename']): this;
+    // @ts-expect-error not supported by Rspack
     sourcePrefix(value: RspackOutput['sourcePrefix']): this;
     strictModuleErrorHandling(
       value: RspackOutput['strictModuleErrorHandling'],
@@ -384,10 +394,13 @@ declare namespace Config {
     >;
     byDependency: TypedChainedMap<this, RspackResolve['byDependency']>;
 
+  // @ts-expect-error not supported by Rspack
     cachePredicate(value: RspackResolve['cachePredicate']): this;
+    // @ts-expect-error not supported by Rspack
     cacheWithContext(value: RspackResolve['cacheWithContext']): this;
     enforceExtension(value: RspackResolve['enforceExtension']): this;
     symlinks(value: RspackResolve['symlinks']): this;
+    // @ts-expect-error not supported by Rspack
     unsafeCache(value: RspackResolve['unsafeCache']): this;
     preferRelative(value: RspackResolve['preferRelative']): this;
     preferAbsolute(value: RspackResolve['preferAbsolute']): this;
@@ -457,6 +470,7 @@ declare namespace Config {
     moduleIds(value: RspackOptimization['moduleIds']): this;
     chunkIds(value: RspackOptimization['chunkIds']): this;
     nodeEnv(value: RspackOptimization['nodeEnv']): this;
+    // @ts-expect-error not supported by Rspack
     mangleWasmImports(value: RspackOptimization['mangleWasmImports']): this;
     removeAvailableModules(
       value: RspackOptimization['removeAvailableModules'],
@@ -465,11 +479,13 @@ declare namespace Config {
     mergeDuplicateChunks(
       value: RspackOptimization['mergeDuplicateChunks'],
     ): this;
+    // @ts-expect-error not supported by Rspack
     flagIncludedChunks(value: RspackOptimization['flagIncludedChunks']): this;
     providedExports(value: RspackOptimization['providedExports']): this;
     usedExports(value: RspackOptimization['usedExports']): this;
     concatenateModules(value: RspackOptimization['concatenateModules']): this;
     sideEffects(value: RspackOptimization['sideEffects']): this;
+    // @ts-expect-error not supported by Rspack
     portableRecords(value: RspackOptimization['portableRecords']): this;
     mangleExports(value: RspackOptimization['mangleExports']): this;
     innerGraph(value: RspackOptimization['innerGraph']): this;
