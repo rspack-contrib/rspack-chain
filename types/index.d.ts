@@ -510,6 +510,7 @@ declare namespace Config {
   class Use<Parent = Rule> extends ChainedMap<Parent> implements Orderable {
     loader(value: string): this;
     options(value: LoaderOptions): this;
+    parallel(value: boolean): this;
 
     tap(f: (options: LoaderOptions) => LoaderOptions): this;
 

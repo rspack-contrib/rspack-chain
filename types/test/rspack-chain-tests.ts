@@ -120,6 +120,7 @@ config
   .tap((config) => [])
   .loader('babel-loader')
   .options({})
+  .parallel(true)
   .end()
   .use('eslint')
   .loader('eslint-loader')

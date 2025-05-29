@@ -38,6 +38,7 @@ test('toConfig', () => {
   const use = rule
     .use('beta')
     .loader('babel-loader')
+    .parallel(true)
     .options({ presets: ['alpha'] });
 
   const config = use.toConfig();
@@ -45,6 +46,7 @@ test('toConfig', () => {
   expect(config).toStrictEqual({
     loader: 'babel-loader',
     options: { presets: ['alpha'] },
+    parallel: true,
   });
 
   expect(config.__ruleNames).toStrictEqual(['alpha']);
