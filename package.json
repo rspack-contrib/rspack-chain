@@ -23,7 +23,7 @@
     "lint:fix": "echo 'pass'",
     "style": "prettier --check .",
     "style:fix": "prettier --write .",
-    "test": "jest",
+    "test": "rstest run",
     "test:types": "tsc -p ./types/test/tsconfig.json"
   },
   "dependencies": {
