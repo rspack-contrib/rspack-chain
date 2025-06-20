@@ -1,6 +1,6 @@
 {
   "name": "rspack-chain",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "main": "src/Config.js",
   "typings": "types/index.d.ts",
   "repository": "rspack-contrib/rspack-chain",
