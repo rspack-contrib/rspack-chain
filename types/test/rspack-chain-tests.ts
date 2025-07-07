@@ -182,7 +182,8 @@ config
   .modules.add('index.js')
   .end()
   .aliasFields.add('foo')
-  .add(['foo'])
+  // Rspack does not support this
+  // .add(['foo'])
   .end()
   .conditionNames.add('foo')
   .end()
@@ -207,7 +208,8 @@ config
     mainFields: ['browser', 'module'],
   })
   .end()
-  .cachePredicate(({ path, request }) => true)
+  // Rspack does not support this
+  // .cachePredicate(({ path, request }) => true)
   .cacheWithContext(true)
   .enforceExtension(true)
   .symlinks(true)

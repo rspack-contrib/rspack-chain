@@ -1,17 +1,16 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "lib": ["es6"],
+    "lib": ["es2022"],
     "noImplicitAny": true,
     "noImplicitThis": true,
+    "skipLibCheck": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "noEmit": true,
-    "baseUrl": ".",
     "paths": {
       "rspack-chain": ["../index.d.ts"]
     }
   },
-  "files": ["../index.d.ts", "rspack-chain-tests.ts"],
-  "compileOnSave": false
+  "files": ["../index.d.ts", "rspack-chain-tests.ts"]
 }
