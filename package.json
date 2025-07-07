@@ -19,8 +19,6 @@
   "packageManager": "pnpm@10.5.1",
   "scripts": {
     "fix": "yarn lint:fix && yarn style:fix",
-    "lint": "echo 'pass'",
-    "lint:fix": "echo 'pass'",
     "style": "prettier --check .",
     "style:fix": "prettier --write .",
     "test": "rstest run",
