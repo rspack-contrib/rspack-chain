@@ -9,6 +9,7 @@ import Plugin from './Plugin.js';
 import Module from './Module.js';
 import Optimization from './Optimization.js';
 import Performance from './Performance.js';
+import { stringify } from 'javascript-stringify';
 
 const castArray = (value) => (Array.isArray(value) ? value : [value]);
 
@@ -115,8 +116,6 @@ export default class extends ChainedMap {
   }
 
   static toString(config, { verbose = false, configPrefix = 'config' } = {}) {
-    const { stringify } = require('javascript-stringify');
-
     return stringify(
       config,
       (value, indent, stringify) => {
