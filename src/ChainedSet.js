@@ -1,4 +1,4 @@
-const createSet = require('./createClass/createSet');
-const createChainable = require('./createClass/createChainable');
+import createSet from './createClass/createSet.js';
+import createChainable from './createClass/createChainable.js';
 
-module.exports = createSet(createChainable(Object));
+export default createSet(createChainable(Object));

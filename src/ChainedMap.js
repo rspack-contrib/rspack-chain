@@ -1,4 +1,4 @@
-const createMap = require('./createClass/createMap');
-const createChainable = require('./createClass/createChainable');
+import createMap from './createClass/createMap.js';
+import createChainable from './createClass/createChainable.js';
 
-module.exports = createMap(createChainable(Object));
+export default createMap(createChainable(Object));

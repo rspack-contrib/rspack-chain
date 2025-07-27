@@ -1,4 +1,4 @@
-module.exports = class extends Function {
+export default class extends Function {
   constructor() {
     super();
     return new Proxy(this, {
@@ -9,4 +9,4 @@ module.exports = class extends Function {
   classCall() {
     throw new Error('not implemented');
   }
-};
+}

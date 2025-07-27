@@ -1,4 +1,4 @@
-module.exports = function createChainable(superClass) {
+export default function createChainable(superClass) {
   return class extends superClass {
     constructor(parent) {
       super();
@@ -14,4 +14,4 @@ module.exports = function createChainable(superClass) {
       return this.parent;
     }
   };
-};
+}

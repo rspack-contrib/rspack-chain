@@ -1,6 +1,6 @@
-const ChainedMap = require('./ChainedMap');
-const ChainedSet = require('./ChainedSet');
-const Plugin = require('./Plugin');
+import ChainedMap from './ChainedMap.js';
+import ChainedSet from './ChainedSet.js';
+import Plugin from './Plugin.js';
 
 const childMaps = ['alias', 'fallback', 'byDependency', 'extensionAlias'];
 const childSets = [
@@ -17,7 +17,7 @@ const childSets = [
   'modules',
 ];
 
-module.exports = class extends ChainedMap {
+export default class extends ChainedMap {
   constructor(parent) {
     super(parent);
 
@@ -90,4 +90,4 @@ module.exports = class extends ChainedMap {
 
     return super.merge(obj, [...omit, ...omissions, 'plugin']);
   }
-};
+}

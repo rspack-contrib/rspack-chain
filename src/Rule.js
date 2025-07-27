@@ -1,8 +1,8 @@
-const ChainedMap = require('./ChainedMap');
-const ChainedSet = require('./ChainedSet');
-const Orderable = require('./Orderable');
-const Use = require('./Use');
-const Resolve = require('./Resolve');
+import ChainedMap from './ChainedMap.js';
+import ChainedSet from './ChainedSet.js';
+import Orderable from './Orderable.js';
+import Use from './Use.js';
+import Resolve from './Resolve.js';
 
 function toArray(arr) {
   return Array.isArray(arr) ? arr : [arr];
@@ -146,4 +146,4 @@ const Rule = Orderable(
   },
 );
 
-module.exports = Rule;
+export default Rule;

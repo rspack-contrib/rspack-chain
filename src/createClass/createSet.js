@@ -1,4 +1,4 @@
-module.exports = function createSet(superClass) {
+export default function createSet(superClass) {
   return class extends superClass {
     constructor(...args) {
       super(...args);
@@ -54,4 +54,4 @@ module.exports = function createSet(superClass) {
       return this;
     }
   };
-};
+}

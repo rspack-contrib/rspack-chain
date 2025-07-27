@@ -1,4 +1,4 @@
-module.exports = function createValue(superClass) {
+export default function createValue(superClass) {
   return class extends superClass {
     constructor(...args) {
       super(...args);
@@ -38,4 +38,4 @@ module.exports = function createValue(superClass) {
       return this.value;
     }
   };
-};
+}

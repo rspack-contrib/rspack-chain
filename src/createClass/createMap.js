@@ -1,6 +1,6 @@
-const merge = require('deepmerge');
+import merge from 'deepmerge';
 
-module.exports = function createMap(superClass) {
+export default function createMap(superClass) {
   return class extends superClass {
     constructor(...args) {
       super(...args);
@@ -149,4 +149,4 @@ module.exports = function createMap(superClass) {
       return this;
     }
   };
-};
+}

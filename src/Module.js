@@ -1,7 +1,7 @@
-const ChainedMap = require('./ChainedMap');
-const Rule = require('./Rule');
+import ChainedMap from './ChainedMap.js';
+import Rule from './Rule.js';
 
-module.exports = class extends ChainedMap {
+export default class extends ChainedMap {
   constructor(parent) {
     super(parent);
     this.rules = new ChainedMap(this);
@@ -59,4 +59,4 @@ module.exports = class extends ChainedMap {
 
     return super.merge(obj, ['rule', 'defaultRule']);
   }
-};
+}

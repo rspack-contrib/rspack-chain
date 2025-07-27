@@ -1,8 +1,8 @@
-const ChainedMap = require('./ChainedMap');
-const ChainedValueMap = require('./ChainedValueMap');
-const Plugin = require('./Plugin');
+import ChainedMap from './ChainedMap.js';
+import ChainedValueMap from './ChainedValueMap.js';
+import Plugin from './Plugin.js';
 
-module.exports = class extends ChainedMap {
+export default class extends ChainedMap {
   constructor(parent) {
     super(parent);
     this.minimizers = new ChainedMap(this);
@@ -64,4 +64,4 @@ module.exports = class extends ChainedMap {
 
     return super.merge(obj, [...omit, 'minimizer']);
   }
-};
+}
