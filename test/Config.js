@@ -1,7 +1,10 @@
-const { validate } = require('webpack');
-const { stringify } = require('javascript-stringify');
+import { validate } from 'webpack';
+import { stringify } from 'javascript-stringify';
+import Config from '../src';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
 const EnvironmentPlugin = require('webpack/lib/EnvironmentPlugin');
-const Config = require('../src/Config');
 
 class StringifyPlugin {
   constructor(...args) {

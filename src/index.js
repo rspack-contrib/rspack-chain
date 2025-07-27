@@ -1,14 +1,14 @@
-const ChainedMap = require('./ChainedMap');
-const ChainedValueMap = require('./ChainedValueMap');
-const ChainedSet = require('./ChainedSet');
-const Resolve = require('./Resolve');
-const ResolveLoader = require('./ResolveLoader');
-const Output = require('./Output');
-const DevServer = require('./DevServer');
-const Plugin = require('./Plugin');
-const Module = require('./Module');
-const Optimization = require('./Optimization');
-const Performance = require('./Performance');
+import ChainedMap from './ChainedMap.js';
+import ChainedValueMap from './ChainedValueMap.js';
+import ChainedSet from './ChainedSet.js';
+import Resolve from './Resolve.js';
+import ResolveLoader from './ResolveLoader.js';
+import Output from './Output.js';
+import DevServer from './DevServer.js';
+import Plugin from './Plugin.js';
+import Module from './Module.js';
+import Optimization from './Optimization.js';
+import Performance from './Performance.js';
 
 const castArray = (value) => (Array.isArray(value) ? value : [value]);
 
@@ -53,7 +53,7 @@ const toEntryObject = (entryPoints) => {
   return formattedEntry;
 };
 
-module.exports = class extends ChainedMap {
+export default class extends ChainedMap {
   constructor() {
     super();
     // https://webpack.js.org/configuration/entry-context/
@@ -204,7 +204,7 @@ module.exports = class extends ChainedMap {
   }
 
   toString(options) {
-    return module.exports.toString(this.toConfig(), options);
+    return this.constructor.toString(this.toConfig(), options);
   }
 
   merge(obj = {}, omit = []) {
@@ -239,4 +239,4 @@ module.exports = class extends ChainedMap {
 
     return super.merge(obj, [...omit, ...omissions, 'entry', 'plugin']);
   }
-};
+}

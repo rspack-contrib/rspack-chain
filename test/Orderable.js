@@ -1,5 +1,5 @@
-const Orderable = require('../src/Orderable');
-const ChainedMap = require('../src/ChainedMap');
+import Orderable from '../src/Orderable';
+import ChainedMap from '../src/ChainedMap';
 
 const Ordered = Orderable(class Test extends ChainedMap {});
 

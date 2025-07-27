@@ -1,3 +1,3 @@
-const createChainable = require('./createClass/createChainable');
+import createChainable from './createClass/createChainable.js';
 
-module.exports = createChainable(Object);
+export default createChainable(Object);

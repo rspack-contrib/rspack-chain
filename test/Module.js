@@ -1,4 +1,4 @@
-const Module = require('../src/Module');
+import Module from '../src/Module';
 
 test('is Chainable', () => {
   const parent = { parent: true };

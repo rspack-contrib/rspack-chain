@@ -1,4 +1,4 @@
-const DevServer = require('../src/DevServer');
+import DevServer from '../src/DevServer';
 
 test('is Chainable', () => {
   const parent = { parent: true };

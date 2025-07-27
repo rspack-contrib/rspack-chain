@@ -1,6 +1,6 @@
-const ChainedMap = require('./ChainedMap');
+import ChainedMap from './ChainedMap.js';
 
-module.exports = class extends ChainedMap {
+export default class extends ChainedMap {
   constructor(parent) {
     super(parent);
     this.extend([
@@ -52,4 +52,4 @@ module.exports = class extends ChainedMap {
       'clean',
     ]);
   }
-};
+}

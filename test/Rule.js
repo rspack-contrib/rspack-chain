@@ -1,4 +1,4 @@
-const Rule = require('../src/Rule');
+import Rule from '../src/Rule';
 
 test('is Chainable', () => {
   const parent = { parent: true };

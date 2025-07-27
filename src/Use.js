@@ -1,8 +1,8 @@
-const merge = require('deepmerge');
-const ChainedMap = require('./ChainedMap');
-const Orderable = require('./Orderable');
+import merge from 'deepmerge';
+import ChainedMap from './ChainedMap.js';
+import Orderable from './Orderable.js';
 
-module.exports = Orderable(
+export default Orderable(
   class extends ChainedMap {
     constructor(parent, name) {
       super(parent);

@@ -1,4 +1,4 @@
-const Callable = require('../src/Callable');
+import Callable from '../src/Callable';
 
 test('callable will throw not implemented', () => {
   const callable = new Callable();

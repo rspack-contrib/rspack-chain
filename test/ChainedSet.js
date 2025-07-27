@@ -1,4 +1,4 @@
-const ChainedSet = require('../src/ChainedSet');
+import ChainedSet from '../src/ChainedSet';
 
 test('is Chainable', () => {
   const parent = { parent: true };

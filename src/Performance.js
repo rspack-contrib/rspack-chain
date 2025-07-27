@@ -1,8 +1,8 @@
-const ChainedValueMap = require('./ChainedValueMap');
+import ChainedValueMap from './ChainedValueMap.js';
 
-module.exports = class extends ChainedValueMap {
+export default class extends ChainedValueMap {
   constructor(parent) {
     super(parent);
     this.extend(['assetFilter', 'hints', 'maxAssetSize', 'maxEntrypointSize']);
   }
-};
+}

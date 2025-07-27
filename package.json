@@ -1,38 +1,49 @@
 {
   "name": "rspack-chain",
   "version": "1.2.6",
-  "main": "src/Config.js",
-  "typings": "types/index.d.ts",
-  "repository": "rspack-contrib/rspack-chain",
   "keywords": [
     "rspack",
     "config",
     "chain",
     "api"
   ],
+  "repository": "rspack-contrib/rspack-chain",
+  "license": "MIT",
+  "author": "rspack-contrib",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "typings": "types/index.d.ts",
   "files": [
-    "src",
+    "dist",
     "types/*.d.ts"
   ],
-  "author": "rspack-contrib",
-  "license": "MIT",
-  "packageManager": "pnpm@10.12.4",
   "scripts": {
+    "build": "rslib build",
+    "dev": "rslib build -w",
     "fix": "yarn lint:fix && yarn style:fix",
+    "prepare": "pnpm build",
     "style": "prettier --check .",
     "style:fix": "prettier --write .",
     "test": "rstest run",
     "test:types": "tsc -p ./types/test/tsconfig.json"
   },
   "dependencies": {
-    "deepmerge": "^4.3.1",
-    "javascript-stringify": "^2.0.1"
+    "deepmerge": "^4.3.1"
   },
   "devDependencies": {
+    "@rslib/core": "^0.11.0",
     "@rspack/core": "^1.3.12",
     "@rstest/core": "^0.0.6",
-    "prettier": "^3.0.0",
+    "javascript-stringify": "^2.0.1",
+    "prettier": "^3.6.2",
     "typescript": "^5.0.0",
     "webpack": "^5.91.0"
-  }
+  },
+  "packageManager": "pnpm@10.12.4"
 }

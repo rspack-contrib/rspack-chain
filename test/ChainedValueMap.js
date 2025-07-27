@@ -1,4 +1,4 @@
-const ChainedValueMap = require('../src/ChainedValueMap');
+import ChainedValueMap from '../src/ChainedValueMap';
 
 test('is Chainable', () => {
   const parent = { parent: true };

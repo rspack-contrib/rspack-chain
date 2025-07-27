@@ -1,7 +1,7 @@
-const ChainedMap = require('./ChainedMap');
-const ChainedSet = require('./ChainedSet');
+import ChainedMap from './ChainedMap.js';
+import ChainedSet from './ChainedSet.js';
 
-module.exports = class extends ChainedMap {
+export default class extends ChainedMap {
   constructor(parent) {
     super(parent);
 
@@ -75,4 +75,4 @@ module.exports = class extends ChainedMap {
 
     return super.merge(obj, ['allowedHosts']);
   }
-};
+}

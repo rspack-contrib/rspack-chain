@@ -1,6 +1,6 @@
-const Callable = require('./Callable');
-const createMap = require('./createClass/createMap');
-const createChainable = require('./createClass/createChainable');
-const createValue = require('./createClass/createValue');
+import Callable from './Callable.js';
+import createMap from './createClass/createMap.js';
+import createChainable from './createClass/createChainable.js';
+import createValue from './createClass/createValue.js';
 
-module.exports = createValue(createMap(createChainable(Callable)));
+export default createValue(createMap(createChainable(Callable)));

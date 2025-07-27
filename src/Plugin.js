@@ -1,7 +1,7 @@
-const ChainedMap = require('./ChainedMap');
-const Orderable = require('./Orderable');
+import ChainedMap from './ChainedMap.js';
+import Orderable from './Orderable.js';
 
-module.exports = Orderable(
+export default Orderable(
   class extends ChainedMap {
     constructor(parent, name, type = 'plugin') {
       super(parent);

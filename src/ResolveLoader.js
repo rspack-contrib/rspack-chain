@@ -1,7 +1,7 @@
-const Resolve = require('./Resolve');
-const ChainedSet = require('./ChainedSet');
+import Resolve from './Resolve.js';
+import ChainedSet from './ChainedSet.js';
 
-module.exports = class extends Resolve {
+export default class extends Resolve {
   constructor(parent) {
     super(parent);
     this.modules = new ChainedSet(this);
@@ -29,4 +29,4 @@ module.exports = class extends Resolve {
 
     return super.merge(obj, [...omit, ...omissions]);
   }
-};
+}

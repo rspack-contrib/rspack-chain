@@ -1,4 +1,4 @@
-const Performance = require('../src/Performance');
+import Performance from '../src/Performance';
 
 test('is Chainable', () => {
   const parent = { parent: true };
