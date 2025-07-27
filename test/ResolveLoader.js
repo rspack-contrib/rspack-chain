@@ -1,4 +1,4 @@
-const ResolveLoader = require('../src/ResolveLoader');
+import ResolveLoader from '../src/ResolveLoader';
 
 test('is Chainable', () => {
   const parent = { parent: true };

@@ -1,4 +1,4 @@
-const Output = require('../src/Output');
+import Output from '../src/Output';
 
 test('is Chainable', () => {
   const parent = { parent: true };

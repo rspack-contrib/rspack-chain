@@ -1,4 +1,4 @@
-const Optimization = require('../src/Optimization');
+import Optimization from '../src/Optimization';
 
 class StringifyPlugin {
   constructor(...args) {

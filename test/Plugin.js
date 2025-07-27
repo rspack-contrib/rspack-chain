@@ -1,5 +1,8 @@
+import Plugin from '../src/Plugin';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
 const EnvironmentPlugin = require('webpack/lib/EnvironmentPlugin');
-const Plugin = require('../src/Plugin');
 
 class StringifyPlugin {
   constructor(...args) {

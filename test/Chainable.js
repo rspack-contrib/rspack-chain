@@ -1,4 +1,4 @@
-const Chainable = require('../src/Chainable');
+import Chainable from '../src/Chainable';
 
 test('calling .end() returns parent', () => {
   const parent = { parent: true };

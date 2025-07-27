@@ -1,4 +1,4 @@
-const Resolve = require('../src/Resolve');
+import Resolve from '../src/Resolve';
 
 class StringifyPlugin {
   constructor(...args) {
