@@ -110,6 +110,17 @@ declare class Config extends __Config.ChainedMap<void> {
   plugin(name: string): Config.Plugin<this, PluginInstance>;
 
   toConfig(): Configuration;
+
+  static toString(
+    config: any,
+    {
+      verbose,
+      configPrefix,
+    }?: {
+      verbose?: boolean | undefined;
+      configPrefix?: string | undefined;
+    },
+  ): string;
 }
 
 declare namespace Config {
