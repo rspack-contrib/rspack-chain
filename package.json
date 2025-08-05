@@ -25,14 +25,14 @@
   ],
   "scripts": {
     "build": "rslib build",
+    "bump": "npx bumpp",
     "dev": "rslib build -w",
     "fix": "yarn lint:fix && yarn style:fix",
     "prepare": "pnpm build",
     "style": "prettier --check .",
     "style:fix": "prettier --write .",
     "test": "rstest run",
-    "test:types": "tsc -p ./types/test/tsconfig.json",
-    "bump": "npx bumpp"
+    "test:types": "tsc -p ./types/test/tsconfig.json"
   },
   "dependencies": {
     "deepmerge": "^4.3.1",
