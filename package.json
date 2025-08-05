@@ -25,6 +25,7 @@
   ],
   "scripts": {
     "build": "rslib build",
+    "bump": "npx bumpp",
     "dev": "rslib build -w",
     "fix": "yarn lint:fix && yarn style:fix",
     "prepare": "pnpm build",
