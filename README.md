@@ -379,6 +379,7 @@ config
   .externalsPresets(externalsPresets)
   .stats(stats)
   .experiments(experiments)
+  .lazyCompilation(lazyCompilation)
   .amd(amd)
   .bail(bail)
   .cache(cache)

@@ -112,6 +112,7 @@ export default class extends ChainedMap {
       'name',
       'infrastructureLogging',
       'snapshot',
+      'lazyCompilation',
     ]);
   }
 

@@ -105,6 +105,7 @@ declare class Config extends __Config.ChainedMap<void> {
   name(value: RspackConfig['name']): this;
   infrastructureLogging(value: RspackConfig['infrastructureLogging']): this;
   snapshot(value: RspackConfig['snapshot']): this;
+  lazyCompilation(value: RspackConfig['lazyCompilation']): this;
 
   entry(name: string): Config.EntryPoint;
   plugin(name: string): Config.Plugin<this, PluginInstance>;
