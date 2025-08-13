@@ -429,6 +429,36 @@ test('merge with omit', () => {
   });
 });
 
+test('lazyCompilation - boolean', () => {
+  const config = new Config();
+
+  config.lazyCompilation(true);
+
+  expect(config.toConfig()).toStrictEqual({
+    lazyCompilation: true,
+  });
+});
+
+test('lazyCompilation - object', () => {
+  const config = new Config();
+
+  config.lazyCompilation({
+    imports: true,
+  });
+
+  config.lazyCompilation({
+    ...config.get('lazyCompilation'),
+    entires: true,
+  });
+
+  expect(config.toConfig()).toStrictEqual({
+    lazyCompilation: {
+      imports: true,
+      entires: true,
+    },
+  });
+});
+
 test('validate empty', () => {
   const config = new Config();
 
