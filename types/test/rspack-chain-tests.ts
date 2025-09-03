@@ -4,7 +4,7 @@
  */
 import * as rspack from '@rspack/core';
 
-import Config = require('rspack-chain');
+import Config from 'rspack-chain';
 
 type ResolvePlugin = Exclude<
   // @ts-expect-error Rspack does not supports resolve plugin

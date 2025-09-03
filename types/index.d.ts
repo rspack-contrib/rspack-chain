@@ -6,7 +6,7 @@ import {
 } from '@rspack/core';
 import * as https from 'https';
 
-export = Config;
+export default Config;
 
 // The compiler type of Rspack / webpack are mismatch,
 // so we use a loose type here to allow using webpack plugins.
