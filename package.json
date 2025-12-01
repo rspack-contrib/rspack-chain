@@ -39,12 +39,12 @@
     "javascript-stringify": "^2.1.0"
   },
   "devDependencies": {
-    "@rslib/core": "^0.17.0",
-    "@rspack/core": "^1.6.0",
-    "@rstest/core": "^0.6.1",
-    "prettier": "^3.6.2",
+    "@rslib/core": "^0.18.2",
+    "@rspack/core": "^1.6.5",
+    "@rstest/core": "^0.6.8",
+    "prettier": "^3.7.3",
     "typescript": "^5.9.3",
-    "webpack": "^5.102.1"
+    "webpack": "^5.103.0"
   },
-  "packageManager": "pnpm@10.20.0"
+  "packageManager": "pnpm@10.24.0"
 }
