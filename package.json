@@ -46,5 +46,13 @@
     "typescript": "^5.9.3",
     "webpack": "^5.103.0"
   },
+  "peerDependencies": {
+    "@rspack/core": "^1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@rspack/core": {
+      "optional": true
+    }
+  },
   "packageManager": "pnpm@10.24.0"
 }
