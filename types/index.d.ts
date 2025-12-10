@@ -189,7 +189,6 @@ declare namespace Config {
     parser: ChainedMap<this>;
     rule(name: string): Rule;
     noParse(value: RspackModule['noParse']): this;
-    // @ts-expect-error not supported by Rspack
     unsafeCache(value: RspackModule['unsafeCache']): this;
     // @ts-expect-error not supported by Rspack
     wrappedContextCritical(value: RspackModule['wrappedContextCritical']): this;
