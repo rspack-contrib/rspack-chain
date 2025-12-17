@@ -26,6 +26,7 @@ export default class extends ChainedMap {
       'portableRecords',
       'mangleExports',
       'innerGraph',
+      'inlineExports',
       'realContentHash',
       'avoidEntryIife',
     ]);
