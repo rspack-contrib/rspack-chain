@@ -502,6 +502,7 @@ declare namespace Config {
     innerGraph(value: RspackOptimization['innerGraph']): this;
     realContentHash(value: RspackOptimization['realContentHash']): this;
     avoidEntryIife(value: RspackOptimization['avoidEntryIife']): this;
+    inlineExports(value: RspackOptimization['inlineExports']): this;
   }
 
   interface RuntimeChunk {

@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@rslib/core": "^0.18.2",
-    "@rspack/core": "^1.6.5",
+    "@rspack/core": "^1.7.0-beta.0",
     "@rstest/core": "^0.6.8",
     "prettier": "^3.7.3",
     "typescript": "^5.9.3",
