@@ -7,9 +7,8 @@
     "chain",
     "api"
   ],
-  "repository": "rspack-contrib/rspack-chain",
+  "repository": "rstackjs/rspack-chain",
   "license": "MIT",
-  "author": "rspack-contrib",
   "type": "module",
   "exports": {
     ".": {
