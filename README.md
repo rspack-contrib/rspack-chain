@@ -356,7 +356,7 @@ specified. This is so you may chain API calls continuously if desired.
 
 For details on the specific values that are valid for all shorthand and
 low-level methods, please refer to their corresponding name in the
-[Rspack docs hierarchy](https://www.rspack.dev/config/).
+[Rspack docs hierarchy](https://rspack.rs/config/).
 
 ```js
 Config: ChainedMap;
