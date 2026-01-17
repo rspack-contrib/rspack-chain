@@ -5,16 +5,6 @@
 import * as rspack from '@rspack/core';
 import Config from 'rspack-chain';
 
-type ResolvePlugin = Exclude<
-  // @ts-expect-error Rspack does not supports resolve plugin
-  Exclude<rspack.ResolveOptions['plugins'], undefined>[number],
-  '...'
->;
-
-class ResolvePluginImpl implements ResolvePlugin {
-  apply(resolver: any): void {}
-}
-
 function expectType<T>(value: T) {}
 
 const config = new Config();
@@ -219,11 +209,6 @@ config
   .unsafeCache(/foo/)
   .preferRelative(true)
   .preferAbsolute(true)
-  .plugin('foo')
-  .use(ResolvePluginImpl, [])
-  .end()
-  .plugins.delete('foo')
-  .end()
   .end()
   // resolveLoader
   .resolveLoader.moduleExtensions.add('.js')
@@ -233,9 +218,6 @@ config
   .modules.add('index.js')
   .end()
   .preferAbsolute(false)
-  .plugin('foo')
-  .use(rspack.DefinePlugin)
-  .end()
   .end()
   // optimization
   .optimization.concatenateModules(true)

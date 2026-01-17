@@ -557,18 +557,11 @@ test('toString', () => {
     .plugin('epsilon')
     .use(class BazPlugin {}, [{ n: 1 }, [2, 3]]);
 
-  config.resolve.plugin('resolver').use(FooPlugin);
   config.optimization.minimizer('minifier').use(FooPlugin);
 
   expect(config.toString().trim()).toBe(
     `
 {
-  resolve: {
-    plugins: [
-      /* config.resolve.plugin('resolver') */
-      new (require('foo-plugin'))()
-    ]
-  },
   module: {
     defaultRules: [
       /* config.module.defaultRule('default') */

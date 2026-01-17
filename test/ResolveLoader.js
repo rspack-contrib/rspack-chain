@@ -90,11 +90,3 @@ test('merge with omit', () => {
     moduleExtensions: ['-loader'],
   });
 });
-
-test('plugin with name', () => {
-  const resolveLoader = new ResolveLoader();
-
-  resolveLoader.plugin('alpha');
-
-  expect(resolveLoader.plugins.get('alpha').name).toBe('alpha');
-});

@@ -1,6 +1,5 @@
 import ChainedMap from './ChainedMap.js';
 import ChainedSet from './ChainedSet.js';
-import Plugin from './Plugin.js';
 
 const childMaps = ['alias', 'fallback', 'byDependency', 'extensionAlias'];
 const childSets = [
@@ -28,7 +27,6 @@ export default class extends ChainedMap {
       this[key] = new ChainedSet(this);
     });
 
-    this.plugins = new ChainedMap(this);
     this.extend([
       'cachePredicate',
       'cacheWithContext',
@@ -39,13 +37,6 @@ export default class extends ChainedMap {
       'preferAbsolute',
       'tsConfig',
     ]);
-  }
-
-  plugin(name) {
-    return this.plugins.getOrCompute(
-      name,
-      () => new Plugin(this, name, 'resolve.plugin'),
-    );
   }
 
   get(key) {
@@ -59,9 +50,7 @@ export default class extends ChainedMap {
   }
 
   toConfig() {
-    const config = Object.assign(this.entries() || {}, {
-      plugins: this.plugins.values().map((plugin) => plugin.toConfig()),
-    });
+    const config = Object.assign(this.entries() || {});
 
     childMaps.forEach((key) => {
       config[key] = this[key].entries();
@@ -74,12 +63,6 @@ export default class extends ChainedMap {
   }
 
   merge(obj, omit = []) {
-    if (!omit.includes('plugin') && 'plugin' in obj) {
-      Object.keys(obj.plugin).forEach((name) =>
-        this.plugin(name).merge(obj.plugin[name]),
-      );
-    }
-
     const omissions = [...childMaps, ...childSets];
 
     omissions.forEach((key) => {
@@ -88,6 +71,6 @@ export default class extends ChainedMap {
       }
     });
 
-    return super.merge(obj, [...omit, ...omissions, 'plugin']);
+    return super.merge(obj, [...omit, ...omissions]);
   }
 }
