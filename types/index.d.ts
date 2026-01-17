@@ -145,7 +145,7 @@ declare namespace Config {
     { [key: string]: Plugin<Parent, PluginType> }
   > {}
 
-  class Plugin<Parent, PluginType extends PluginInstance | ResolvePlugin>
+  class Plugin<Parent, PluginType extends PluginInstance>
     extends ChainedMap<Parent>
     implements Orderable
   {
@@ -364,12 +364,6 @@ declare namespace Config {
   }
 
   type RspackResolve = Required<NonNullable<Configuration['resolve']>>;
-  type ResolvePlugin = Exclude<
-    // @ts-expect-error Rspack does not supports resolve plugin
-    NonNullable<ResolveOptions['plugins']>[number],
-    '...'
-  >;
-
   class Resolve<T = Config> extends ChainedMap<T> {
     alias: TypedChainedMap<this, { [key: string]: string | false | string[] }>;
     aliasFields: TypedChainedSet<this, RspackResolve['aliasFields'][number]>;
@@ -396,10 +390,6 @@ declare namespace Config {
     restrictions: TypedChainedSet<this, RspackResolve['restrictions'][number]>;
     roots: TypedChainedSet<this, RspackResolve['roots'][number]>;
     modules: TypedChainedSet<this, RspackResolve['modules'][number]>;
-    plugins: TypedChainedMap<
-      this,
-      { [key: string]: Plugin<Resolve, ResolvePlugin> }
-    >;
     fallback: TypedChainedMap<
       this,
       { [key: string]: string | false | string[] }
@@ -417,7 +407,6 @@ declare namespace Config {
     preferRelative(value: RspackResolve['preferRelative']): this;
     preferAbsolute(value: RspackResolve['preferAbsolute']): this;
 
-    plugin(name: string): Plugin<this, ResolvePlugin>;
     tsConfig(value: RspackResolve['tsConfig']): this;
   }
 
@@ -535,7 +524,7 @@ declare namespace Config {
   // [inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map[-debugids].
   export type DevTool = RspackConfig['devtool'];
 
-  interface PluginClass<PluginType extends PluginInstance | ResolvePlugin> {
+  interface PluginClass<PluginType extends PluginInstance> {
     new (...opts: any[]): PluginType;
   }
 

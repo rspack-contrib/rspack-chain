@@ -1,15 +1,5 @@
 import Resolve from '../src/Resolve';
 
-class StringifyPlugin {
-  constructor(...args) {
-    this.values = args;
-  }
-
-  apply() {
-    return JSON.stringify(this.values);
-  }
-}
-
 test('is Chainable', () => {
   const parent = { parent: true };
   const resolve = new Resolve(parent);
@@ -46,9 +36,6 @@ test('toConfig with values', () => {
   const resolve = new Resolve();
 
   resolve
-    .plugin('stringify')
-    .use(StringifyPlugin)
-    .end()
     .modules.add('src')
     .end()
     .extensions.add('.js')
@@ -56,7 +43,6 @@ test('toConfig with values', () => {
     .alias.set('React', 'src/react');
 
   expect(resolve.toConfig()).toStrictEqual({
-    plugins: [new StringifyPlugin()],
     modules: ['src'],
     extensions: ['.js'],
     alias: { React: 'src/react' },
@@ -154,36 +140,6 @@ test('merge with omit', () => {
     extensions: ['.js', '.jsx'],
     alias: { React: 'src/react' },
   });
-});
-
-test('plugin with name', () => {
-  const resolve = new Resolve();
-
-  resolve.plugin('alpha');
-
-  expect(resolve.plugins.get('alpha').name).toBe('alpha');
-  expect(resolve.plugins.get('alpha').type).toBe('resolve.plugin');
-});
-
-test('plugin empty', () => {
-  const resolve = new Resolve();
-  const instance = resolve.plugin('stringify').use(StringifyPlugin).end();
-
-  expect(instance).toBe(resolve);
-  expect(resolve.plugins.has('stringify')).toBe(true);
-  expect(resolve.plugins.get('stringify').get('args')).toStrictEqual([]);
-});
-
-test('plugin with args', () => {
-  const resolve = new Resolve();
-
-  resolve.plugin('stringify').use(StringifyPlugin, ['alpha', 'beta']);
-
-  expect(resolve.plugins.has('stringify')).toBe(true);
-  expect(resolve.plugins.get('stringify').get('args')).toStrictEqual([
-    'alpha',
-    'beta',
-  ]);
 });
 
 test('tsConfig string', () => {

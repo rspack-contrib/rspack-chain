@@ -636,58 +636,6 @@ config.resolve.modules
   .clear()
 ```
 
-#### Config resolve plugin
-
-```js
-config.resolve
-  .plugin(name) : ChainedMap
-```
-
-#### Config resolve plugin: adding
-
-_NOTE: Do not use `new` to create the resolve plugin, as this will be done for you._
-
-```js
-config.resolve.plugin(name).use(RspackResolvePlugin, args);
-
-// Examples
-
-config.resolve
-  .plugin('resolve-css')
-  .use(ResolveCSSPlugin, [{ cssBasePath: true }]);
-
-// Resolve plugins can also be specified by their path, allowing the expensive require()s to be
-// skipped in cases where the plugin or Rspack configuration won't end up being used.
-config.resolve
-  .plugin('resolve-css')
-  .use(require.resolve('resolve-css-plugin'), [{ cssBasePath: true }]);
-```
-
-#### Config resolve plugin: modify arguments
-
-```js
-config.resolve.plugin(name).tap((args) => newArgs);
-
-// Example
-config.resolve
-  .plugin('resolve-css')
-  .tap((args) => [...args, { cssBasePath: false }]);
-```
-
-#### Config resolve plugin: modify instantiation
-
-```js
-config.resolve.plugin(name).init((Plugin, args) => new Plugin(...args));
-```
-
-#### Config resolve plugin: removing
-
-```js
-config.resolve.plugins.delete(name);
-```
-
---- end
-
 #### Config resolve fallback
 
 ```js
@@ -940,79 +888,6 @@ config
   .end()
   .plugin('script-ext')
   .use(ScriptExtRspackPlugin);
-```
-
-#### Config resolve plugins
-
-```js
-// Backed at config.resolve.plugins
-config.resolve.plugin(name) : ChainedMap
-```
-
-#### Config resolve plugins: adding
-
-_NOTE: Do not use `new` to create the plugin, as this will be done for you._
-
-```js
-config.resolve.plugin(name).use(RspackPlugin, args);
-```
-
-#### Config resolve plugins: modify arguments
-
-```js
-config.resolve.plugin(name).tap((args) => newArgs);
-```
-
-#### Config resolve plugins: modify instantiation
-
-```js
-config.resolve.plugin(name).init((Plugin, args) => new Plugin(...args));
-```
-
-#### Config resolve plugins: removing
-
-```js
-config.resolve.plugins.delete(name);
-```
-
-#### Config resolve plugins: ordering before
-
-Specify that the current `plugin` context should operate before another named
-`plugin`. You cannot use both `.before()` and `.after()` on the same resolve
-plugin.
-
-```js
-config.resolve.plugin(name).before(otherName);
-
-// Example
-
-config.resolve
-  .plugin('beta')
-  .use(BetaRspackPlugin)
-  .end()
-  .plugin('alpha')
-  .use(AlphaRspackPlugin)
-  .before('beta');
-```
-
-#### Config resolve plugins: ordering after
-
-Specify that the current `plugin` context should operate after another named
-`plugin`. You cannot use both `.before()` and `.after()` on the same resolve
-plugin.
-
-```js
-config.resolve.plugin(name).after(otherName);
-
-// Example
-
-config.resolve
-  .plugin('beta')
-  .after('alpha')
-  .use(BetaRspackTemplate)
-  .end()
-  .plugin('alpha')
-  .use(AlphaRspackPlugin);
 ```
 
 #### Config node
