@@ -88,8 +88,7 @@ declare class Config extends __Config.ChainedMap<void> {
   experiments(value: RspackConfig['experiments']): this;
   amd(value: RspackConfig['amd']): this;
   bail(value: RspackConfig['bail']): this;
-  // Rspack only supports boolean cache
-  cache(value: any): this;
+  cache(value: RspackConfig['cache']): this;
   dependencies(value: RspackConfig['dependencies']): this;
   ignoreWarnings(value: RspackConfig['ignoreWarnings']): this;
   loader(value: RspackConfig['loader']): this;
