@@ -428,7 +428,6 @@ config.output : ChainedMap
 
 config.output
   .auxiliaryComment(auxiliaryComment)
-  .charset(charset)
   .chunkFilename(chunkFilename)
   .chunkLoadTimeout(chunkLoadTimeout)
   .chunkLoadingGlobal(chunkLoadingGlobal)
