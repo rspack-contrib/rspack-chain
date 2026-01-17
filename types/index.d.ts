@@ -208,15 +208,14 @@ declare namespace Config {
 
   class Output extends ChainedMap<Config> {
     auxiliaryComment(value: RspackOutput['auxiliaryComment']): this;
+    assetModuleFilename(value: RspackOutput['assetModuleFilename']): this;
+    bundlerInfo(value: RspackOutput['bundlerInfo']): this;
     charset(value: RspackOutput['charset']): this;
     chunkFilename(value: RspackOutput['chunkFilename']): this;
     chunkLoadTimeout(value: RspackOutput['chunkLoadTimeout']): this;
     chunkLoadingGlobal(value: RspackOutput['chunkLoadingGlobal']): this;
     chunkLoading(value: RspackOutput['chunkLoading']): this;
     chunkFormat(value: RspackOutput['chunkFormat']): this;
-    enabledChunkLoadingTypes(
-      value: RspackOutput['enabledChunkLoadingTypes'],
-    ): this;
     crossOriginLoading(value: RspackOutput['crossOriginLoading']): this;
     devtoolFallbackModuleFilenameTemplate(
       value: RspackOutput['devtoolFallbackModuleFilenameTemplate'],
@@ -225,8 +224,10 @@ declare namespace Config {
       value: RspackOutput['devtoolModuleFilenameTemplate'],
     ): this;
     devtoolNamespace(value: RspackOutput['devtoolNamespace']): this;
+    enabledChunkLoadingTypes(
+      value: RspackOutput['enabledChunkLoadingTypes'],
+    ): this;
     filename(value: RspackOutput['filename']): this;
-    assetModuleFilename(value: RspackOutput['assetModuleFilename']): this;
     globalObject(value: RspackOutput['globalObject']): this;
     uniqueName(value: RspackOutput['uniqueName']): this;
     hashDigest(value: RspackOutput['hashDigest']): this;
