@@ -34,13 +34,7 @@ config
   .entryPoints.delete('main')
   .end()
   // output
-  .output.auxiliaryComment('Test Comment')
-  .auxiliaryComment({
-    root: 'Root Comment',
-    commonjs: 'CommonJS Comment',
-    commonjs2: 'CommonJS2 Comment',
-    amd: 'AMD Comment',
-  })
+  .output
   .bundlerInfo({
     force: false,
   })
@@ -60,15 +54,12 @@ config
   .hotUpdateChunkFilename('update')
   .hotUpdateMainFilename('main')
   .library('var')
-  .libraryExport(['MyModule', 'MySubModule'])
-  .libraryTarget('var')
   .path('/')
   .pathinfo(true)
   .publicPath('/')
   .sourceMapFilename('index.js.map')
   .strictModuleExceptionHandling(true)
   .iife(true)
-  .umdNamedDefine(true)
   .webassemblyModuleFilename('[id].[hash].wasm')
   .clean({
     keep: 'foo',

@@ -423,7 +423,6 @@ config.entryPoints
 config.output : ChainedMap
 
 config.output
-  .auxiliaryComment(auxiliaryComment)
   .chunkFilename(chunkFilename)
   .chunkLoadTimeout(chunkLoadTimeout)
   .chunkLoadingGlobal(chunkLoadingGlobal)
@@ -446,8 +445,6 @@ config.output
   .hotUpdateFunction(hotUpdateFunction)
   .hotUpdateMainFilename(hotUpdateMainFilename)
   .library(library)
-  .libraryExport(libraryExport)
-  .libraryTarget(libraryTarget)
   .importFunctionName(importFunctionName)
   .path(path)
   .pathinfo(pathinfo)
@@ -456,7 +453,6 @@ config.output
   .sourceMapFilename(sourceMapFilename)
   .strictModuleErrorHandling(strictModuleErrorHandling)
   .strictModuleExceptionHandling(strictModuleExceptionHandling)
-  .umdNamedDefine(umdNamedDefine)
   .workerChunkLoading(workerChunkLoading)
   .enabledLibraryTypes(enabledLibraryTypes)
   .environment(environment)

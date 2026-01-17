@@ -4,7 +4,6 @@ export default class extends ChainedMap {
   constructor(parent) {
     super(parent);
     this.extend([
-      'auxiliaryComment',
       'assetModuleFilename',
       'bundlerInfo',
       'chunkFilename',
@@ -28,8 +27,6 @@ export default class extends ChainedMap {
       'hotUpdateGlobal',
       'hotUpdateMainFilename',
       'library',
-      'libraryExport',
-      'libraryTarget',
       'importFunctionName',
       'path',
       'pathinfo',
@@ -38,7 +35,6 @@ export default class extends ChainedMap {
       'sourceMapFilename',
       'strictModuleErrorHandling',
       'strictModuleExceptionHandling',
-      'umdNamedDefine',
       'workerChunkLoading',
       'enabledLibraryTypes',
       'environment',
