@@ -5,6 +5,8 @@ export default class extends ChainedMap {
     super(parent);
     this.extend([
       'auxiliaryComment',
+      'assetModuleFilename',
+      'bundlerInfo',
       'charset',
       'chunkFilename',
       'chunkLoadTimeout',
@@ -17,7 +19,6 @@ export default class extends ChainedMap {
       'devtoolModuleFilenameTemplate',
       'devtoolNamespace',
       'filename',
-      'assetModuleFilename',
       'globalObject',
       'uniqueName',
       'hashDigest',

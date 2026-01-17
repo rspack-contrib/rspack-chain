@@ -3,7 +3,6 @@
  * of this document: https://github.com/neutrinojs/rspack-chain#config
  */
 import * as rspack from '@rspack/core';
-
 import Config from 'rspack-chain';
 
 type ResolvePlugin = Exclude<
@@ -51,6 +50,9 @@ config
     commonjs: 'CommonJS Comment',
     commonjs2: 'CommonJS2 Comment',
     amd: 'AMD Comment',
+  })
+  .bundlerInfo({
+    force: false,
   })
   .charset(true)
   .chunkFilename('')
