@@ -384,11 +384,7 @@ config
   .dependencies(dependencies)
   .ignoreWarnings(ignoreWarnings)
   .loader(loader)
-  .parallelism(parallelism)
   .profile(profile)
-  .recordsPath(recordsPath)
-  .recordsInputPath(recordsInputPath)
-  .recordsOutputPath(recordsOutputPath)
   .name(name)
   .infrastructureLogging(infrastructureLogging)
   .snapshot(snapshot);
@@ -458,7 +454,6 @@ config.output
   .publicPath(publicPath)
   .scriptType(scriptType)
   .sourceMapFilename(sourceMapFilename)
-  .sourcePrefix(sourcePrefix)
   .strictModuleErrorHandling(strictModuleErrorHandling)
   .strictModuleExceptionHandling(strictModuleExceptionHandling)
   .umdNamedDefine(umdNamedDefine)
@@ -479,11 +474,8 @@ config.output
 config.resolve : ChainedMap
 
 config.resolve
-  .cachePredicate(cachePredicate)
-  .cacheWithContext(cacheWithContext)
   .enforceExtension(enforceExtension)
   .symlinks(symlinks)
-  .unsafeCache(unsafeCache)
   .preferRelative(preferRelative)
   .preferAbsolute(preferAbsolute)
   .tsConfig({
@@ -722,16 +714,13 @@ config.optimization
   .moduleIds(moduleIds)
   .chunkIds(chunkIds)
   .nodeEnv(nodeEnv)
-  .mangleWasmImports(mangleWasmImports)
   .removeAvailableModules(removeAvailableModules)
   .removeEmptyChunks(removeEmptyChunks)
   .mergeDuplicateChunks(mergeDuplicateChunks)
-  .flagIncludedChunks(flagIncludedChunks)
   .providedExports(providedExports)
   .usedExports(usedExports)
   .concatenateModules(concatenateModules)
   .sideEffects(sideEffects)
-  .portableRecords(portableRecords)
   .mangleExports(mangleExports)
   .innerGraph(innerGraph)
   .realContentHash(realContentHash)
@@ -987,11 +976,6 @@ config.module : ChainedMap
 config.module
   .noParse(noParse)
   .unsafeCache(unsafeCache)
-  .wrappedContextCritical(wrappedContextCritical)
-  .exprContextRegExp(exprContextRegExp)
-  .wrappedContextRecursive(wrappedContextRecursive)
-  .strictExportPresence(strictExportPresence)
-  .wrappedContextRegExp(wrappedContextRegExp)
 ```
 
 #### Config module rules: shorthand methods
@@ -1265,11 +1249,7 @@ config.merge({
   externals,
   loader,
   mode,
-  parallelism,
   profile,
-  recordsPath,
-  recordsInputPath,
-  recordsOutputPath,
   stats,
   target,
   watch,
@@ -1319,7 +1299,6 @@ config.merge({
 
   optimization: {
     concatenateModules,
-    flagIncludedChunks,
     mergeDuplicateChunks,
     minimize,
     minimizer: {
@@ -1335,7 +1314,6 @@ config.merge({
     nodeEnv,
     noEmitOnErrors,
     occurrenceOrder,
-    portableRecords,
     providedExports,
     removeAvailableModules,
     removeEmptyChunks,
