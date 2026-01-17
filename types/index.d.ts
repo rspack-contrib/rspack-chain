@@ -186,7 +186,6 @@ declare namespace Config {
   type RspackOutput = Required<NonNullable<Configuration['output']>>;
 
   class Output extends ChainedMap<Config> {
-    auxiliaryComment(value: RspackOutput['auxiliaryComment']): this;
     assetModuleFilename(value: RspackOutput['assetModuleFilename']): this;
     bundlerInfo(value: RspackOutput['bundlerInfo']): this;
     chunkFilename(value: RspackOutput['chunkFilename']): this;
@@ -216,8 +215,6 @@ declare namespace Config {
     hotUpdateGlobal(value: RspackOutput['hotUpdateGlobal']): this;
     hotUpdateMainFilename(value: RspackOutput['hotUpdateMainFilename']): this;
     library(value: RspackOutput['library']): this;
-    libraryExport(value: RspackOutput['libraryExport']): this;
-    libraryTarget(value: RspackOutput['libraryTarget']): this;
     importFunctionName(value: RspackOutput['importFunctionName']): this;
     path(value: RspackOutput['path']): this;
     pathinfo(value: RspackOutput['pathinfo']): this;
@@ -230,7 +227,6 @@ declare namespace Config {
     strictModuleExceptionHandling(
       value: RspackOutput['strictModuleExceptionHandling'],
     ): this;
-    umdNamedDefine(value: RspackOutput['umdNamedDefine']): this;
     workerChunkLoading(value: RspackOutput['workerChunkLoading']): this;
     enabledLibraryTypes(value: RspackOutput['enabledLibraryTypes']): this;
     environment(value: RspackOutput['environment']): this;
