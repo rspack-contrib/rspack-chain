@@ -44,7 +44,6 @@ config
   .bundlerInfo({
     force: false,
   })
-  .charset(true)
   .chunkFilename('')
   .chunkLoadTimeout(1000)
   .chunkLoadingGlobal('xasd')

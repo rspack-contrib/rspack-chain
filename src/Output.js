@@ -7,7 +7,6 @@ export default class extends ChainedMap {
       'auxiliaryComment',
       'assetModuleFilename',
       'bundlerInfo',
-      'charset',
       'chunkFilename',
       'chunkLoadTimeout',
       'chunkLoadingGlobal',

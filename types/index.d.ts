@@ -210,7 +210,6 @@ declare namespace Config {
     auxiliaryComment(value: RspackOutput['auxiliaryComment']): this;
     assetModuleFilename(value: RspackOutput['assetModuleFilename']): this;
     bundlerInfo(value: RspackOutput['bundlerInfo']): this;
-    charset(value: RspackOutput['charset']): this;
     chunkFilename(value: RspackOutput['chunkFilename']): this;
     chunkLoadTimeout(value: RspackOutput['chunkLoadTimeout']): this;
     chunkLoadingGlobal(value: RspackOutput['chunkLoadingGlobal']): this;
