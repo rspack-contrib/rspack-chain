@@ -28,11 +28,8 @@ export default class extends ChainedMap {
     });
 
     this.extend([
-      'cachePredicate',
-      'cacheWithContext',
       'enforceExtension',
       'symlinks',
-      'unsafeCache',
       'preferRelative',
       'preferAbsolute',
       'tsConfig',

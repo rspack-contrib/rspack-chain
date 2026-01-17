@@ -36,7 +36,6 @@ export default class extends ChainedMap {
       'publicPath',
       'scriptType',
       'sourceMapFilename',
-      'sourcePrefix',
       'strictModuleErrorHandling',
       'strictModuleExceptionHandling',
       'umdNamedDefine',

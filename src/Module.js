@@ -11,14 +11,6 @@ export default class extends ChainedMap {
     this.extend([
       'noParse',
       'unsafeCache',
-      // https://webpack.js.org/configuration/module/#module-contexts
-      // since they are document as deprecated and will soon be removed
-      // only the parameters that the demo is provided in the documentation are supported
-      'wrappedContextCritical',
-      'exprContextRegExp',
-      'wrappedContextRecursive',
-      'strictExportPresence',
-      'wrappedContextRegExp',
     ]);
   }
 

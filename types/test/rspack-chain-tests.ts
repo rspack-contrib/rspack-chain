@@ -66,7 +66,6 @@ config
   .pathinfo(true)
   .publicPath('/')
   .sourceMapFilename('index.js.map')
-  .sourcePrefix('~')
   .strictModuleExceptionHandling(true)
   .iife(true)
   .umdNamedDefine(true)
@@ -77,8 +76,6 @@ config
   .end()
   // module
   .module.noParse(/.min.js$/)
-  .strictExportPresence(true)
-  .wrappedContextRegExp(/sdasd/)
   .generator.set('asset', {
     publicPath: 'assets/',
   })
@@ -199,13 +196,8 @@ config
     mainFields: ['browser', 'module'],
   })
   .end()
-  // Rspack does not support this
-  // .cachePredicate(({ path, request }) => true)
-  .cacheWithContext(true)
   .enforceExtension(true)
   .symlinks(true)
-  .unsafeCache(false)
-  .unsafeCache(/foo/)
   .preferRelative(true)
   .preferAbsolute(true)
   .end()
@@ -220,12 +212,9 @@ config
   .end()
   // optimization
   .optimization.concatenateModules(true)
-  .flagIncludedChunks(true)
   .mergeDuplicateChunks(true)
   .minimize(true)
   .nodeEnv(false)
-  .mangleWasmImports(true)
-  .portableRecords(true)
   .providedExports(true)
   .removeAvailableModules(true)
   .removeEmptyChunks(true)
@@ -393,10 +382,6 @@ config
   .mode('development')
   .mode('production')
   .profile(false)
-  .parallelism(2)
-  .recordsPath('')
-  .recordsInputPath('')
-  .recordsOutputPath('')
   .stats({
     assets: false,
     publicPath: true,
