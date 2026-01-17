@@ -31,21 +31,16 @@ This is easier explained through the examples following.
 
 ## Installation
 
-`rspack-chain` requires Node.js 16 or higher. `rspack-chain` also only creates
-configuration objects designed for use with Rspack.
-
-You may install this package using either Yarn or npm (choose one):
-
-**Yarn**
+For Rspack v2, install `rspack-chain` v2 alpha:
 
 ```bash
-yarn add --dev rspack-chain
+npm add rspack-chain@alpha -D
 ```
 
-**npm**
+For Rspack v1, install the `rspack-chain` v1:
 
 ```bash
-npm install --save-dev rspack-chain
+npm add rspack-chain@^1.0.0 -D
 ```
 
 ## Getting Started
